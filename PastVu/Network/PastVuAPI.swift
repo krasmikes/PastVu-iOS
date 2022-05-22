@@ -49,6 +49,10 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
+enum ErrorResponse: String {
+    case invalidEndpoint
+}
+
 protocol DataRequest {
     associatedtype Response
 
@@ -75,6 +79,15 @@ extension DataRequest where Response: Decodable {
     }
 }
 
-enum ErrorResponse: String {
-    case invalidEndpoint
+protocol RequestParameters: Codable {
+    func toString() -> String
+}
+
+extension RequestParameters {
+    func toString() -> String {
+        guard let jsonData = try? JSONEncoder().encode(self),
+              let result = String(data: jsonData, encoding: .utf8) else { return "" }
+
+        return result
+    }
 }

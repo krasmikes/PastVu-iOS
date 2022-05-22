@@ -30,6 +30,8 @@ class YandexMapView: UIView, MapView {
 
     private func commonInit() {
         view.mapWindow.map.addCameraListener(with: self)
+        view.mapWindow.map.isTiltGesturesEnabled = false
+        view.mapWindow.map.isRotateGesturesEnabled = false
 
         [
             view
@@ -99,10 +101,25 @@ extension YandexMapView: YMKMapCameraListener {
         guard finished,
               map === view.mapWindow.map else { return }
 
-        location = CLLocation(latitude: cameraPosition.target.latitude, longitude: cameraPosition.target.longitude)
+        location = CLLocation(
+            latitude: cameraPosition.target.latitude,
+            longitude: cameraPosition.target.longitude
+        )
         currentZoom = cameraPosition.zoom
 
-        delegate?.locationChanged(withCoordinates: location)
+        let ne = CLLocation(
+            latitude: map.visibleRegion.topRight.latitude,
+            longitude: map.visibleRegion.topRight.longitude
+        )
+
+        let sw = CLLocation(
+            latitude: map.visibleRegion.bottomLeft.latitude,
+            longitude: map.visibleRegion.bottomLeft.longitude
+        )
+
+        let boundingBox = BoundingBox(ne: ne, sw: sw)
+
+        delegate?.locationChanged(withCoordinates: location, zoom: Int(currentZoom), boundingBox: boundingBox)
     }
 }
 

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private let zoomInButton = UIButton(frame: .zero)
     private let zoomOutButton = UIButton(frame: .zero)
     private let currentLocationButton = UIButton(frame: .zero)
+    private var requestResult: ByBoundsResponse.Result? = nil
 
 
     override func viewDidLoad() {
@@ -116,7 +117,22 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MapViewDelegate {
-    func locationChanged(withCoordinates coordinates: CLLocation) {
-        print("--- map view delegate method location changed called with coordinates: \(coordinates)")
+    func locationChanged(withCoordinates coordinates: CLLocation, zoom: Int, boundingBox: BoundingBox) {
+        let parameters = ByBoundsRequest.ByBoundsParameters(
+            polygon: boundingBox.getPolygon(startFrom: .bottomLeftCounterClockWise, isCoordinatesReversed: true),
+            zoom: zoom
+        )
+
+        let request = ByBoundsRequest(params: parameters)
+
+        networkService.request(request) { [weak self] result in
+            switch result {
+            case .success(let response):
+                print(response.result)
+//                self?.requestResult = response.result
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

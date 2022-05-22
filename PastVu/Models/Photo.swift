@@ -8,15 +8,21 @@
 import Foundation
 
 struct Photo: Codable {
-    let s: Int
+    let s: Int?
     let cid: Int
-    let file: String
+    let filePath: String
     let title: String
-    let geo: [Double]
-    let year: Int
-    let dir: Direction
+    let coordinates: [Double]
+    let yearFrom: Int
+    let yearTo: Int
+    let direction: Direction?
 
-    enum Direction: String, Codable {
-        case n, e, s, w, ne, se, sw, nw
+    enum CodingKeys: String, CodingKey {
+        case s, cid, title
+        case filePath = "file"
+        case direction = "dir"
+        case coordinates = "geo"
+        case yearFrom = "year"
+        case yearTo = "year2"
     }
 }

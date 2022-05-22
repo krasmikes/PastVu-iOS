@@ -33,12 +33,12 @@ struct NearestPhotosRequest: DataRequest {
         return response
     }
 
-    struct NearestPhotosParameters: Codable {
-        var geo: [Double] = [55.755830, 37.617780]
+    struct NearestPhotosParameters: RequestParameters {
+        var coordinates: [Double] //поменять на тип координат
         var except: Int? = nil
         var distance: Int? = nil
-        var year: Int? = nil
-        var year2: Int? = nil
+        var yearFrom: Int? = nil
+        var yearTo: Int? = nil
         var type: PhotoType? = nil
         var limit: Int? = nil
         var skip: Int? = nil
@@ -48,11 +48,11 @@ struct NearestPhotosRequest: DataRequest {
             case painting
         }
 
-        func toString() -> String {
-            guard let jsonData = try? JSONEncoder().encode(self),
-                  let result = String(data: jsonData, encoding: .utf8) else { return "" }
-
-            return result
+        enum CodingKeys: String, CodingKey {
+            case coordinates = "geo"
+            case yearFrom = "year"
+            case yearTo = "year2"
+            case except, distance, type, limit, skip
         }
     }
 }
