@@ -19,3 +19,8 @@ playground.xcworkspace
 
 # CocoaPods
 Pods/
+
+# OS-specific files
+.DS_Store
+.Trashes
+Thumbs.db
