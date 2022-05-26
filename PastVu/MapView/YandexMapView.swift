@@ -16,7 +16,11 @@ class YandexMapView: UIView, MapView {
     private var location: CLLocation = CLLocation()
     private var currentZoom: Float = 15
 
-    private let view = YMKMapView(frame: .zero, vulkanPreferred: true)! // подумать на форсанрапом
+#if targetEnvironment(simulator)
+    private let view = YMKMapView(frame: .zero, vulkanPreferred: true)!
+#else
+    private let view = YMKMapView(frame: .zero)
+#endif
 
     override init(frame: CGRect) {
         super.init(frame: frame)
