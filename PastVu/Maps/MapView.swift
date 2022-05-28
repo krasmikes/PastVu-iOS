@@ -18,5 +18,5 @@ protocol MapView: UIView {
 }
 
 protocol MapViewDelegate {
-    func locationChanged(withCoordinates coordinates: CLLocation, zoom: Int, boundingBox: BoundingBox)
+    func locationChanged(withCoordinates coordinates: CLLocationCoordinate2D, zoom: Int, boundingBox: BoundingBox)
 }

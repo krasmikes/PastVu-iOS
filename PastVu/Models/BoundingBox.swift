@@ -10,19 +10,19 @@ import Foundation
 import CoreLocation
 
 struct BoundingBox {
-    let ne: CLLocation
-    let sw: CLLocation
+    let ne: CLLocationCoordinate2D
+    let sw: CLLocationCoordinate2D
     var topLeft: [Double] {
-        [ne.coordinate.latitude, sw.coordinate.longitude]
+        [ne.latitude, sw.longitude]
     }
     var topRight: [Double] {
-        [ne.coordinate.latitude, ne.coordinate.longitude]
+        [ne.latitude, ne.longitude]
     }
     var bottomLeft: [Double] {
-        [sw.coordinate.latitude, sw.coordinate.longitude]
+        [sw.latitude, sw.longitude]
     }
     var bottomRight: [Double] {
-        [sw.coordinate.latitude, ne.coordinate.longitude]
+        [sw.latitude, ne.longitude]
     }
 
     func getPolygon(startFrom: BoundingBoxDirection, isCoordinatesReversed: Bool) -> Polygon {

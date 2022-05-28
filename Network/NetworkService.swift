@@ -7,11 +7,9 @@
 
 import Foundation
 
-protocol NetworkService {
-    func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void)
-}
+final class NetworkService {
+    static let shared = NetworkService()
 
-final class NetworkServiceImpl: NetworkService {
     func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
         guard var urlComponent = URLComponents(string: request.url) else {
             let error = NSError(
@@ -43,7 +41,7 @@ final class NetworkServiceImpl: NetworkService {
             return completion(.failure(error))
         }
 
-        print("URL is \(url)")
+        print("URL is \(url)") // убрать потом
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method.rawValue

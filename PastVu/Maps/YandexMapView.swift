@@ -13,7 +13,7 @@ class YandexMapView: UIView, MapView {
     var delegate: MapViewDelegate?
 
     private let locationManager = LocationManager.shared
-    private var location: CLLocation = CLLocation()
+    private var location: CLLocationCoordinate2D = CLLocationCoordinate2D()
     private var currentZoom: Float = 15
 
 #if targetEnvironment(simulator)
@@ -55,9 +55,9 @@ class YandexMapView: UIView, MapView {
     }
 
     func moveTo(coordinates: [Double]) {
-        location = CLLocation(latitude: coordinates[0], longitude: coordinates[1])
+        location = CLLocationCoordinate2D(latitude: coordinates[0], longitude: coordinates[1])
 
-        let point = YMKPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let point = YMKPoint(latitude: location.latitude, longitude: location.longitude)
 
         view.mapWindow.map.move(
             with: YMKCameraPosition.init(target: point, zoom: currentZoom, azimuth: 0, tilt: 0),
@@ -71,7 +71,7 @@ class YandexMapView: UIView, MapView {
 
             self.location = location
 
-            let point = YMKPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let point = YMKPoint(latitude: location.latitude, longitude: location.longitude)
 
             self.view.mapWindow.map.move(
                 with: YMKCameraPosition.init(target: point, zoom: self.currentZoom, azimuth: 0, tilt: 0)
@@ -82,7 +82,7 @@ class YandexMapView: UIView, MapView {
 
     func zoomIn() {
         currentZoom += 1
-        let point = YMKPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let point = YMKPoint(latitude: location.latitude, longitude: location.longitude)
 
         view.mapWindow.map.move(
             with: YMKCameraPosition.init(target: point, zoom: currentZoom, azimuth: 0, tilt: 0)
@@ -91,7 +91,7 @@ class YandexMapView: UIView, MapView {
 
     func zoomOut() {
         currentZoom -= 1
-        let point = YMKPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let point = YMKPoint(latitude: location.latitude, longitude: location.longitude)
 
         view.mapWindow.map.move(
             with: YMKCameraPosition.init(target: point, zoom: currentZoom, azimuth: 0, tilt: 0)
@@ -105,18 +105,18 @@ extension YandexMapView: YMKMapCameraListener {
         guard finished,
               map === view.mapWindow.map else { return }
 
-        location = CLLocation(
+        location = CLLocationCoordinate2D(
             latitude: cameraPosition.target.latitude,
             longitude: cameraPosition.target.longitude
         )
         currentZoom = cameraPosition.zoom
 
-        let ne = CLLocation(
+        let ne = CLLocationCoordinate2D(
             latitude: map.visibleRegion.topRight.latitude,
             longitude: map.visibleRegion.topRight.longitude
         )
 
-        let sw = CLLocation(
+        let sw = CLLocationCoordinate2D(
             latitude: map.visibleRegion.bottomLeft.latitude,
             longitude: map.visibleRegion.bottomLeft.longitude
         )

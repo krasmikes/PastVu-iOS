@@ -25,6 +25,7 @@
 		29AAAE14283511E4003DDD71 /* Cluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAAE13283511E4003DDD71 /* Cluster.swift */; };
 		29C7EA02283266F400FA3E30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA01283266F400FA3E30 /* MapView.swift */; };
 		29C7EA042832677700FA3E30 /* YandexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA032832677700FA3E30 /* YandexMapView.swift */; };
+		29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E794482842462200907A53 /* UserDefaultsManager.swift */; };
 		3C2304C4107D8133053E0740 /* Pods_PastVu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2144BB56CA3A6FA1AE8B025 /* Pods_PastVu.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		29AAAE13283511E4003DDD71 /* Cluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cluster.swift; sourceTree = "<group>"; };
 		29C7EA01283266F400FA3E30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		29C7EA032832677700FA3E30 /* YandexMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMapView.swift; sourceTree = "<group>"; };
+		29E794482842462200907A53 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		82CD36060E10DDF30A30AC09 /* Pods-PastVu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastVu.debug.xcconfig"; path = "Target Support Files/Pods-PastVu/Pods-PastVu.debug.xcconfig"; sourceTree = "<group>"; };
 		F2144BB56CA3A6FA1AE8B025 /* Pods_PastVu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PastVu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -95,11 +97,11 @@
 		297564BB2825068F006840E7 /* PastVu */ = {
 			isa = PBXGroup;
 			children = (
+				29E79447284244AC00907A53 /* Services */,
 				297564D9282D01A2006840E7 /* Models */,
-				297564D8282D0185006840E7 /* Network */,
 				297564BC2825068F006840E7 /* AppDelegate.swift */,
-				29AAAE102834F519003DDD71 /* PinView */,
-				29C7EA052832679300FA3E30 /* MapView */,
+				29AAAE102834F519003DDD71 /* Pins */,
+				29C7EA052832679300FA3E30 /* Maps */,
 				297564BE2825068F006840E7 /* SceneDelegate.swift */,
 				297564C02825068F006840E7 /* ViewController.swift */,
 				297564C528250691006840E7 /* Assets.xcassets */,
@@ -140,22 +142,32 @@
 			path = Methods;
 			sourceTree = "<group>";
 		};
-		29AAAE102834F519003DDD71 /* PinView */ = {
+		29AAAE102834F519003DDD71 /* Pins */ = {
 			isa = PBXGroup;
 			children = (
 				29AAAE0E2834F507003DDD71 /* PinView.swift */,
 			);
-			path = PinView;
+			path = Pins;
 			sourceTree = "<group>";
 		};
-		29C7EA052832679300FA3E30 /* MapView */ = {
+		29C7EA052832679300FA3E30 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
 				29C7EA01283266F400FA3E30 /* MapView.swift */,
 				29C7EA032832677700FA3E30 /* YandexMapView.swift */,
-				29AAAE0C2833FD23003DDD71 /* LocationManager.swift */,
 			);
-			path = MapView;
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		29E79447284244AC00907A53 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				29AAAE0C2833FD23003DDD71 /* LocationManager.swift */,
+				297564D8282D0185006840E7 /* Network */,
+				29E794482842462200907A53 /* UserDefaultsManager.swift */,
+			);
+			name = Services;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DB8F2F27C58D0F1635B49C6C /* Pods */ = {
@@ -283,6 +295,7 @@
 			files = (
 				297564D7282C01B4006840E7 /* Photo.swift in Sources */,
 				29AAAE14283511E4003DDD71 /* Cluster.swift in Sources */,
+				29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */,
 				29C7EA02283266F400FA3E30 /* MapView.swift in Sources */,
 				29AAAE0D2833FD23003DDD71 /* LocationManager.swift in Sources */,
 				297564D128250801006840E7 /* NetworkService.swift in Sources */,
@@ -439,8 +452,10 @@
 				DEVELOPMENT_TEAM = GB4R5FUHG3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PastVu/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enable location please";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -468,8 +483,10 @@
 				DEVELOPMENT_TEAM = GB4R5FUHG3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PastVu/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enable location please";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

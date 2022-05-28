@@ -10,7 +10,7 @@ import CoreLocation
 import YandexMapsMobile
 
 class ViewController: UIViewController {
-    private let networkService = NetworkServiceImpl()
+    private let networkService = NetworkService.shared
     private var mapView: MapView = YandexMapView(frame: .zero)
     private let controlsStackView = UIStackView(frame: .zero)
     private let zoomInButton = UIButton(frame: .zero)
@@ -117,7 +117,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MapViewDelegate {
-    func locationChanged(withCoordinates coordinates: CLLocation, zoom: Int, boundingBox: BoundingBox) {
+    func locationChanged(withCoordinates coordinates: CLLocationCoordinate2D, zoom: Int, boundingBox: BoundingBox) {
         let parameters = ByBoundsRequest.ByBoundsParameters(
             polygon: boundingBox.getPolygon(startFrom: .bottomLeftCounterClockWise, isCoordinatesReversed: true),
             zoom: zoom

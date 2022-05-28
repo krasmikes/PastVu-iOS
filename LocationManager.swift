@@ -12,8 +12,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = LocationManager()
 
     private let locationManager : CLLocationManager
-    private var onGettingCurrentLocation: ((CLLocation) -> ())? = nil
-    private var location: CLLocation = CLLocation()
+    private var onGettingCurrentLocation: ((CLLocationCoordinate2D) -> ())?
+    private var location: CLLocationCoordinate2D?
 
     override init() {
         locationManager = CLLocationManager()
@@ -22,7 +22,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
 
-    func getCurrentLocation(completion: @escaping (CLLocation) -> ()) {
+    func getCurrentLocation(completion: @escaping (CLLocationCoordinate2D) -> ()) {
         onGettingCurrentLocation = completion
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -33,13 +33,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         guard let mostRecentLocation = locations.last else {
             return
         }
-        location = mostRecentLocation
-        onGettingCurrentLocation?(location)
+        location = mostRecentLocation.coordinate
+        onGettingCurrentLocation?(mostRecentLocation.coordinate)
         locationManager.stopUpdatingLocation()
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        print(error) // обработать ошибку
         locationManager.stopUpdatingLocation()
     }
 
