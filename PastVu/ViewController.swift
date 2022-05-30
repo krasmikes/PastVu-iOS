@@ -11,12 +11,26 @@ import YandexMapsMobile
 
 class ViewController: UIViewController {
     private let networkService = NetworkService.shared
-    private var mapView: MapView = YandexMapView(frame: .zero)
+    private var mapView: MapView
     private let controlsStackView = UIStackView(frame: .zero)
     private let zoomInButton = UIButton(frame: .zero)
     private let zoomOutButton = UIButton(frame: .zero)
     private let currentLocationButton = UIButton(frame: .zero)
     private var requestResult: ByBoundsResponse.Result? = nil
+
+    init(mapSettings: MapSettings) {
+        switch mapSettings.provider {
+        case .Yandex:
+            mapView = YandexMapView(frame: .zero)
+        }
+        mapView.location = mapSettings.location
+        mapView.currentZoom = Float(mapSettings.zoom)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
 
     override func viewDidLoad() {
@@ -81,25 +95,7 @@ class ViewController: UIViewController {
 
         ].forEach { $0.isActive = true }
 
-        mapView.moveTo(coordinates: [55.751574, 37.573856])
-        
-
-//        let parameters = NearestPhotosRequest.NearestPhotosParameters(
-//            geo: [41.693360, 44.801222]
-//        )
-//
-//        let request = NearestPhotosRequest(params: parameters)
-//
-//        print(request)
-//
-//        networkService.request(request) { result in
-//            switch result {
-//            case .success(let response):
-//                print(response.result)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        mapView.moveTo(coordinates: mapView.location)
 
     }
 
@@ -117,7 +113,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MapViewDelegate {
-    func locationChanged(withCoordinates coordinates: CLLocationCoordinate2D, zoom: Int, boundingBox: BoundingBox) {
+    func locationChanged(withCoordinates coordinates: Coordinate, zoom: Int, boundingBox: BoundingBox) {
         let parameters = ByBoundsRequest.ByBoundsParameters(
             polygon: boundingBox.getPolygon(startFrom: .bottomLeftCounterClockWise, isCoordinatesReversed: true),
             zoom: zoom
@@ -129,7 +125,6 @@ extension ViewController: MapViewDelegate {
             switch result {
             case .success(let response):
                 print(response.result)
-//                self?.requestResult = response.result
             case .failure(let error):
                 print(error)
             }

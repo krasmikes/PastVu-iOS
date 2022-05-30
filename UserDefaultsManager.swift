@@ -23,30 +23,44 @@ class UserDefaultsManager {
         )
     }
 
+    func setMapSettings(_ settings: MapSettings) {
+        setPreferredMapProvider(settings.provider)
+        setLastLocation(settings.location)
+        setLastZoom(settings.zoom)
+    }
+
     //MARK: - Preferred Map Provider
 
     func getPreferredMapProvider() -> MapProvider {
-        guard let provider = storage.object(forKey: StorageKeys.mapProvider.rawValue) as? MapProvider else {
+        guard let providerData = storage.data(forKey: StorageKeys.mapProvider.rawValue),
+              let provider = try? JSONDecoder().decode(MapProvider.self, from: providerData) else {
             return MapProvider.Yandex
         }
         return provider
     }
 
     func setPreferredMapProvider(_ provider: MapProvider) {
-        storage.set(provider, forKey: StorageKeys.mapProvider.rawValue)
+        guard let providerData = try? JSONEncoder().encode(provider) else {
+            return
+        }
+        storage.set(providerData, forKey: StorageKeys.mapProvider.rawValue)
     }
 
     //MARK: - Last Location
 
-    func getLastLocation() -> CLLocationCoordinate2D {
-        guard let location = storage.object(forKey: StorageKeys.lastLocation.rawValue) as? CLLocationCoordinate2D else {
-            return CLLocationCoordinate2D(latitude: 55.755833, longitude: 37.617222)
+    func getLastLocation() -> Coordinate {
+        guard let locationData = storage.data(forKey: StorageKeys.lastLocation.rawValue),
+              let location = try? JSONDecoder().decode(Coordinate.self, from: locationData) else {
+            return Coordinate(latitude: 55.755833, longitude: 37.617222)
         }
         return location
     }
 
-    func setLastLocation(_ location: CLLocationCoordinate2D) {
-        storage.set(location, forKey: StorageKeys.lastLocation.rawValue)
+    func setLastLocation(_ location: Coordinate) {
+        guard let locationData = try? JSONEncoder().encode(location) else {
+            return
+        }
+        storage.set(locationData, forKey: StorageKeys.lastLocation.rawValue)
     }
 
     //MARK: - Last Zoom
@@ -67,15 +81,5 @@ class UserDefaultsManager {
         case mapProvider
         case lastLocation
         case lastZoom
-    }
-
-    enum MapProvider: String, Codable {
-        case Yandex
-    }
-
-    struct MapSettings {
-        let provider: MapProvider
-        let location: CLLocationCoordinate2D
-        let zoom: Int
     }
 }

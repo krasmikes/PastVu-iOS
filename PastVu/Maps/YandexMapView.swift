@@ -13,8 +13,9 @@ class YandexMapView: UIView, MapView {
     var delegate: MapViewDelegate?
 
     private let locationManager = LocationManager.shared
-    private var location: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    private var currentZoom: Float = 15
+    private let userDefaultsManager = UserDefaultsManager.shared
+    var location: Coordinate = Coordinate(latitude: 0, longitude: 0)
+    var currentZoom: Float = 15
 
 #if targetEnvironment(simulator)
     private let view = YMKMapView(frame: .zero, vulkanPreferred: true)!
@@ -33,6 +34,9 @@ class YandexMapView: UIView, MapView {
     }
 
     private func commonInit() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+
         view.mapWindow.map.addCameraListener(with: self)
         view.mapWindow.map.isTiltGesturesEnabled = false
         view.mapWindow.map.isRotateGesturesEnabled = false
@@ -54,8 +58,18 @@ class YandexMapView: UIView, MapView {
         ].forEach { $0.isActive = true }
     }
 
-    func moveTo(coordinates: [Double]) {
-        location = CLLocationCoordinate2D(latitude: coordinates[0], longitude: coordinates[1])
+    @objc func appMovedToBackground() {
+        userDefaultsManager.setMapSettings(
+            .init(
+                provider: .Yandex,
+                location: location,
+                zoom: Int(currentZoom)
+            )
+        )
+    }
+
+    func moveTo(coordinates: Coordinate) {
+        location = coordinates
 
         let point = YMKPoint(latitude: location.latitude, longitude: location.longitude)
 
@@ -105,18 +119,18 @@ extension YandexMapView: YMKMapCameraListener {
         guard finished,
               map === view.mapWindow.map else { return }
 
-        location = CLLocationCoordinate2D(
+        location = Coordinate(
             latitude: cameraPosition.target.latitude,
             longitude: cameraPosition.target.longitude
         )
         currentZoom = cameraPosition.zoom
 
-        let ne = CLLocationCoordinate2D(
+        let ne = Coordinate(
             latitude: map.visibleRegion.topRight.latitude,
             longitude: map.visibleRegion.topRight.longitude
         )
 
-        let sw = CLLocationCoordinate2D(
+        let sw = Coordinate(
             latitude: map.visibleRegion.bottomLeft.latitude,
             longitude: map.visibleRegion.bottomLeft.longitude
         )

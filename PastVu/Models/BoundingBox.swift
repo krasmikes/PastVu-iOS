@@ -10,8 +10,8 @@ import Foundation
 import CoreLocation
 
 struct BoundingBox {
-    let ne: CLLocationCoordinate2D
-    let sw: CLLocationCoordinate2D
+    let ne: Coordinate
+    let sw: Coordinate
     var topLeft: [Double] {
         [ne.latitude, sw.longitude]
     }

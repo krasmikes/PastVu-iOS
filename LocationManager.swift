@@ -12,8 +12,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = LocationManager()
 
     private let locationManager : CLLocationManager
-    private var onGettingCurrentLocation: ((CLLocationCoordinate2D) -> ())?
-    private var location: CLLocationCoordinate2D?
+    private var onGettingCurrentLocation: ((Coordinate) -> ())?
+    private var location: Coordinate?
 
     override init() {
         locationManager = CLLocationManager()
@@ -22,7 +22,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
 
-    func getCurrentLocation(completion: @escaping (CLLocationCoordinate2D) -> ()) {
+    func getCurrentLocation(completion: @escaping (Coordinate) -> ()) {
         onGettingCurrentLocation = completion
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -30,11 +30,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let mostRecentLocation = locations.last else {
+        guard let mostRecentCoordinates = locations.last?.coordinate else {
             return
         }
-        location = mostRecentLocation.coordinate
-        onGettingCurrentLocation?(mostRecentLocation.coordinate)
+        let location = Coordinate(
+            latitude: mostRecentCoordinates.latitude,
+            longitude: mostRecentCoordinates.longitude
+        )
+        
+        self.location = location
+        onGettingCurrentLocation?(location)
         locationManager.stopUpdatingLocation()
     }
 
