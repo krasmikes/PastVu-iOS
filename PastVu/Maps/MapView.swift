@@ -9,16 +9,11 @@ import UIKit
 import CoreLocation
 
 protocol MapView: UIView {
-    var delegate: MapViewDelegate? { get set }
-    var location: Coordinate { get set }
-    var currentZoom: Float { get set }
+    var viewModel: MapViewModel { get set }
 
-    func moveTo(coordinates: Coordinate)
-    func moveToCurrentLocation()
-    func zoomIn()
-    func zoomOut()
+    func moveTo(coordinates: Coordinate, zoom: Float)
 }
 
-protocol MapViewDelegate {
+protocol MapViewDelegate: AnyObject {
     func locationChanged(withCoordinates coordinates: Coordinate, zoom: Int, boundingBox: BoundingBox)
 }
