@@ -65,4 +65,8 @@ class MapViewModel {
         self.zoom = zoom
         delegate?.locationChanged(withCoordinates: location, zoom: Int(zoom), boundingBox: boundingBox)
     }
+
+    func showPins(_ pins: [PinViewModel]) {
+        view?.showPins(pins)
+    }
 }

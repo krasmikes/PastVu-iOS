@@ -11,6 +11,9 @@ class MainViewModel {
     private let networkService = NetworkService.shared
 
     weak var view: MainViewController?
+
+    var photos = [Photo]()
+    var clusters = [Cluster]()
     
     var provider: MapProvider
     var location: Coordinate
@@ -40,6 +43,49 @@ class MainViewModel {
     @objc func currentLocationButtonTapped() {
         view?.mapView.viewModel.moveToCurrentLocation()
     }
+
+    func updatePhotosAndClusters(photos: [Photo], clusters: [Cluster]) {
+        self.photos = photos
+        self.clusters = clusters
+        DispatchQueue.main.async { [weak self] in
+            self?.updateUI()
+        }
+    }
+
+    func updateUI() {
+        var pins = [PinViewModel]()
+        if !clusters.isEmpty {
+            pins.append(
+                contentsOf: clusters.map { cluster in
+                    PinViewModel(
+                        pinType: .cluster,
+                        id: cluster.preview.cid,
+                        coordinates: Coordinate(latitude: cluster.coordinates[0], longitude: cluster.coordinates[1]),
+                        direction: cluster.preview.direction,
+                        year: cluster.preview.yearFrom,
+                        photo: cluster.preview.filePath
+                    )
+                }
+            )
+        }
+        if !photos.isEmpty {
+            pins.append(
+                contentsOf: photos.map { photo in
+                    PinViewModel(
+                        pinType: .pin,
+                        id: photo.cid,
+                        coordinates: Coordinate(latitude: photo.coordinates[0], longitude: photo.coordinates[1]),
+                        direction: photo.direction,
+                        year: photo.yearFrom,
+                        photo: photo.filePath
+                    )
+                }
+            )
+        }
+
+        view?.mapView.viewModel.showPins(pins)
+    }
+
 }
 
 extension MainViewModel: MapViewDelegate {
@@ -60,9 +106,9 @@ extension MainViewModel: MapViewDelegate {
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let response):
-                print(response.result)
+                self?.updatePhotosAndClusters(photos: response.result.photos, clusters: response.result.clusters)
             case .failure(let error):
-                print(error)
+                print(error) // обработать ошибку
             }
         }
     }

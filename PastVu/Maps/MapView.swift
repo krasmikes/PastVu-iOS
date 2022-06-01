@@ -12,6 +12,7 @@ protocol MapView: UIView {
     var viewModel: MapViewModel { get set }
 
     func moveTo(coordinates: Coordinate, zoom: Float)
+    func showPins(_ pins: [PinViewModel])
 }
 
 protocol MapViewDelegate: AnyObject {

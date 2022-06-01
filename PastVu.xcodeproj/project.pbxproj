@@ -27,6 +27,7 @@
 		29BB54442844A4CB00AEFB78 /* MapSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB54432844A4CB00AEFB78 /* MapSettings.swift */; };
 		29BB54462844AB5200AEFB78 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB54452844AB5200AEFB78 /* Coordinate.swift */; };
 		29BB54482844D63600AEFB78 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB54472844D63600AEFB78 /* MainViewModel.swift */; };
+		29BB544E28474D1900AEFB78 /* PinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB544D28474D1900AEFB78 /* PinViewModel.swift */; };
 		29C7EA02283266F400FA3E30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA01283266F400FA3E30 /* MapView.swift */; };
 		29C7EA042832677700FA3E30 /* YandexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA032832677700FA3E30 /* YandexMapView.swift */; };
 		29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E794482842462200907A53 /* UserDefaultsManager.swift */; };
@@ -57,6 +58,7 @@
 		29BB54432844A4CB00AEFB78 /* MapSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettings.swift; sourceTree = "<group>"; };
 		29BB54452844AB5200AEFB78 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		29BB54472844D63600AEFB78 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		29BB544D28474D1900AEFB78 /* PinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewModel.swift; sourceTree = "<group>"; };
 		29C7EA01283266F400FA3E30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		29C7EA032832677700FA3E30 /* YandexMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMapView.swift; sourceTree = "<group>"; };
 		29E794482842462200907A53 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				29AAAE0E2834F507003DDD71 /* PinView.swift */,
+				29BB544D28474D1900AEFB78 /* PinViewModel.swift */,
 			);
 			path = Pins;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				297564D7282C01B4006840E7 /* Photo.swift in Sources */,
 				29AAAE14283511E4003DDD71 /* Cluster.swift in Sources */,
 				29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */,
+				29BB544E28474D1900AEFB78 /* PinViewModel.swift in Sources */,
 				29C7EA02283266F400FA3E30 /* MapView.swift in Sources */,
 				29AAAE0D2833FD23003DDD71 /* LocationManager.swift in Sources */,
 				297564D128250801006840E7 /* NetworkService.swift in Sources */,

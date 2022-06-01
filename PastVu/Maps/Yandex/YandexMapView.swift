@@ -68,6 +68,26 @@ class YandexMapView: UIView, MapView {
         )
     }
 
+    func showPins(_ pins: [PinViewModel]) {
+        let mapObjects = view.mapWindow.map.mapObjects
+        mapObjects.clear()
+
+        for pin in pins {
+            let pinView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+            pinView.backgroundColor = pin.pinType == .pin ? .green : .red
+            pinView.layer.cornerRadius = 5
+
+            let viewProvider = YRTViewProvider(uiView: pinView)
+
+            if let viewProvider = viewProvider {
+                mapObjects.addPlacemark(
+                    with: YMKPoint(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude),
+                    view: viewProvider
+                )
+            }
+        }
+    }
+
     
 }
 
