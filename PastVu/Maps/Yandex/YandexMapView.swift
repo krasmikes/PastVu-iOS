@@ -73,19 +73,34 @@ class YandexMapView: UIView, MapView {
         mapObjects.clear()
 
         for pin in pins {
-            let pinView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-            pinView.backgroundColor = pin.pinType == .pin ? .green : .red
-            pinView.layer.cornerRadius = 5
-
-            let viewProvider = YRTViewProvider(uiView: pinView)
-
-            if let viewProvider = viewProvider {
+            let pinView = PinView(viewModel: pin)
+            if let viewImage = convertViewToImage(pinView) {
                 mapObjects.addPlacemark(
                     with: YMKPoint(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude),
-                    view: viewProvider
+                    image: viewImage
                 )
             }
+//            let viewProvider = YRTViewProvider(uiView: pinView)
+
+//            if let viewProvider = viewProvider {
+//                let placemark = mapObjects.addPlacemark(
+//                    with: YMKPoint(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude)
+//                )
+//                placemark.setViewWithView(viewProvider)
+//            }
         }
+    }
+
+    private func convertViewToImage(_ view: UIView) -> UIImage? {
+
+        let size = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        if let aContext = UIGraphicsGetCurrentContext() {
+            view.layer.render(in: aContext)
+        }
+        let img: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img
     }
 
     

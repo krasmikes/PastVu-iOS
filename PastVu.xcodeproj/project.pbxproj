@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */; };
 		297564BD2825068F006840E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BC2825068F006840E7 /* AppDelegate.swift */; };
 		297564BF2825068F006840E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BE2825068F006840E7 /* SceneDelegate.swift */; };
 		297564C12825068F006840E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564C02825068F006840E7 /* MainViewController.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0D69E59CAA63A98C346131E7 /* Pods-PastVu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastVu.release.xcconfig"; path = "Target Support Files/Pods-PastVu/Pods-PastVu.release.xcconfig"; sourceTree = "<group>"; };
+		292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
 		297564B92825068F006840E7 /* PastVu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastVu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297564BC2825068F006840E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		297564BE2825068F006840E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		292EE22B2848ADD500CB27C9 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		297564B02825068F006840E7 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 				297564C528250691006840E7 /* Assets.xcassets */,
 				297564C728250691006840E7 /* LaunchScreen.storyboard */,
 				297564CA28250691006840E7 /* Info.plist */,
+				292EE22B2848ADD500CB27C9 /* Extentions */,
 			);
 			path = PastVu;
 			sourceTree = "<group>";
@@ -135,8 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				297564D6282C01B4006840E7 /* Photo.swift */,
-				29AAAE112834FAA2003DDD71 /* Direction.swift */,
 				29AAAE13283511E4003DDD71 /* Cluster.swift */,
+				29AAAE112834FAA2003DDD71 /* Direction.swift */,
 				2999D5D828363F9200195246 /* Polygon.swift */,
 				2999D5DA2836479600195246 /* BoundingBox.swift */,
 				29BB54452844AB5200AEFB78 /* Coordinate.swift */,
@@ -341,6 +352,7 @@
 				2999D5DB2836479600195246 /* BoundingBox.swift in Sources */,
 				29BB54482844D63600AEFB78 /* MainViewModel.swift in Sources */,
 				2999D5D928363F9200195246 /* Polygon.swift in Sources */,
+				292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */,
 				297564BF2825068F006840E7 /* SceneDelegate.swift in Sources */,
 				297564DB282D01DC006840E7 /* PastVuAPI.swift in Sources */,
 				29AAAE122834FAA2003DDD71 /* Direction.swift in Sources */,

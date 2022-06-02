@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 final class NetworkService {
     static let shared = NetworkService()
 
-    func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
+    func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> ()) {
         guard var urlComponent = URLComponents(string: request.url) else {
             let error = NSError(
                 domain: ErrorResponse.invalidEndpoint.rawValue,
@@ -67,5 +68,19 @@ final class NetworkService {
             }
         }
         .resume()
+    }
+
+    func loadImage(path: String, completion: @escaping (Result<UIImage, Error>) -> ()) {
+        guard let baseUrl = URL(string: "https://pastvu.com/_p/d/") else { return }
+        let url = baseUrl.appendingPathComponent(path)
+
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: url),
+               let image = UIImage(data: data) {
+                completion(.success(image))
+            } else {
+                completion(.failure(NSError()))
+            }
+        }
     }
 }
