@@ -54,21 +54,21 @@ class MainViewModel {
 
     func updateUI() {
         var pins = [PinViewModel]()
-//        if !clusters.isEmpty {
-//            pins.append(
-//                contentsOf: clusters.map { cluster in
-//                    PinViewModel(
-//                        pinType: .cluster,
-//                        id: cluster.preview.cid,
-//                        coordinates: Coordinate(latitude: cluster.coordinates[0], longitude: cluster.coordinates[1]),
-//                        direction: cluster.preview.direction,
-//                        year: cluster.preview.yearFrom,
-//                        photo: cluster.preview.filePath,
-//                        count: String(cluster.count)
-//                    )
-//                }
-//            )
-//        }
+        if !clusters.isEmpty {
+            pins.append(
+                contentsOf: clusters.map { cluster in
+                    PinViewModel(
+                        pinType: .cluster,
+                        id: cluster.preview.cid,
+                        coordinates: Coordinate(latitude: cluster.coordinates[0], longitude: cluster.coordinates[1]),
+                        direction: cluster.preview.direction,
+                        year: cluster.preview.yearFrom,
+                        photo: cluster.preview.filePath,
+                        count: String(cluster.count)
+                    )
+                }
+            )
+        }
         if !photos.isEmpty {
             pins.append(
                 contentsOf: photos.map { photo in

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PinViewModel {
     weak var view: PinView?
@@ -18,6 +19,7 @@ class PinViewModel {
     let year: Int
     let photo: String
     let count: String?
+    var onPhotoDownloaded: ((UIImage) -> ())?
 
     init(pinType: PinType,
          id: Int,
@@ -25,7 +27,8 @@ class PinViewModel {
          direction: Direction?,
          year: Int,
          photo: String,
-         count: String? = nil
+         count: String? = nil,
+         onPhotoDownloaded: ((UIImage) -> ())? = nil
     ) {
         self.pinType = pinType
         self.id = id
@@ -34,16 +37,15 @@ class PinViewModel {
         self.year = year
         self.photo = photo
         self.count = count
+        self.onPhotoDownloaded = onPhotoDownloaded
     }
 
     func getImage() {
-        networkService.loadImage(path: photo) { result in
+        networkService.loadImage(path: photo) { [weak self] result in
             switch result {
             case.success(let image):
-                DispatchQueue.main.async { [weak self] in
-                    self?.view?.photoView.image = image
-                }
-            case .failure(_):
+                self?.onPhotoDownloaded?(image)
+            case .failure(_): // сделать ошибку
                 print("--- ERROR: COULDN'T GET PHOTO ---")
             }
         }

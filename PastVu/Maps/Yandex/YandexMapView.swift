@@ -75,35 +75,30 @@ class YandexMapView: UIView, MapView {
         for pin in pins {
             let pinView = PinView(viewModel: pin)
             if let viewImage = convertViewToImage(pinView) {
-                mapObjects.addPlacemark(
+                let placemark = mapObjects.addPlacemark(
                     with: YMKPoint(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude),
                     image: viewImage
                 )
-            }
-//            let viewProvider = YRTViewProvider(uiView: pinView)
+                pin.onPhotoDownloaded = { [weak self] image in // capture list?
+                    DispatchQueue.main.async {
+                        pinView.photoView.image = image
+                        guard let viewImageWithPhoto = self?.convertViewToImage(pinView) else { return }
 
-//            if let viewProvider = viewProvider {
-//                let placemark = mapObjects.addPlacemark(
-//                    with: YMKPoint(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude)
-//                )
-//                placemark.setViewWithView(viewProvider)
-//            }
+                        placemark.setIconWith(viewImageWithPhoto)
+
+                    }
+                }
+            }
         }
     }
 
     private func convertViewToImage(_ view: UIView) -> UIImage? {
-
-        let size = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        if let aContext = UIGraphicsGetCurrentContext() {
-            view.layer.render(in: aContext)
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let image = renderer.image { ctx in
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
-        let img: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img
+        return image
     }
-
-    
 }
 
 extension YandexMapView: YMKMapCameraListener {
@@ -132,5 +127,3 @@ extension YandexMapView: YMKMapCameraListener {
         viewModel.cameraPositionChanged(with: boundingBox, location: location, zoom: cameraPosition.zoom)
     }
 }
-
-

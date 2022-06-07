@@ -17,7 +17,13 @@ class PinView: UIView {
 
     init(viewModel: PinViewModel) {
         self.viewModel = viewModel
-        super.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20)) // исправить
+        switch viewModel.pinType {
+        case .pin:
+            super.init(frame: CGRect(x: 0, y: 0, width: 14, height: 14))
+        case .cluster:
+            super.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        }
+
         commonInit()
     }
 
@@ -31,8 +37,8 @@ class PinView: UIView {
         [
             circleView,
             directionPointer,
+            photoView,
             photosCountLabel,
-            photoView
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
@@ -42,7 +48,7 @@ class PinView: UIView {
         case .pin:
             circleView.isHidden = false
             circleView.backgroundColor = .green //поменять
-            circleView.layer.cornerRadius = 7.5
+            circleView.layer.cornerRadius = 7
 
             directionPointer.isHidden = false
             makeDirectionPointer()
@@ -51,14 +57,18 @@ class PinView: UIView {
             photoView.isHidden = true
 
             [
-                heightAnchor.constraint(equalToConstant: 20),
-                widthAnchor.constraint(equalToConstant: 20),
+                widthAnchor.constraint(equalToConstant: 14),
+                heightAnchor.constraint(equalToConstant: 14),
 
                 circleView.widthAnchor.constraint(equalToConstant: 14),
                 circleView.heightAnchor.constraint(equalToConstant: 14),
-                circleView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                circleView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+                circleView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                circleView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
+                directionPointer.widthAnchor.constraint(equalToConstant: 14),
+                directionPointer.heightAnchor.constraint(equalToConstant: 14),
+                directionPointer.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
+                directionPointer.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
 
             ].forEach { $0.isActive = true }
 
@@ -69,14 +79,19 @@ class PinView: UIView {
             if let count = viewModel.count {
                 photosCountLabel.isHidden = false
                 photosCountLabel.text = count
+                photosCountLabel.font = photosCountLabel.font.withSize(10)
+                photosCountLabel.textColor = .white
+                photosCountLabel.textAlignment = .center
             }
 
             photoView.isHidden = false
+            photoView.backgroundColor = .gray
+            photoView.image = UIImage(systemName: "photo")
             viewModel.getImage()
 
             [
-                heightAnchor.constraint(equalToConstant: 20),
-                widthAnchor.constraint(equalToConstant: 20),
+                heightAnchor.constraint(equalToConstant: 40),
+                widthAnchor.constraint(equalToConstant: 40),
 
                 photoView.topAnchor.constraint(equalTo: self.topAnchor),
                 photoView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -86,33 +101,30 @@ class PinView: UIView {
                 photosCountLabel.leadingAnchor.constraint(equalTo: photoView.leadingAnchor),
                 photosCountLabel.trailingAnchor.constraint(equalTo: photoView.trailingAnchor),
                 photosCountLabel.bottomAnchor.constraint(equalTo: photoView.bottomAnchor),
-                photosCountLabel.heightAnchor.constraint(equalToConstant: 5)
+                photosCountLabel.heightAnchor.constraint(equalToConstant: 10)
             ].forEach { $0.isActive = true }
         }
     }
 
     private func makeDirectionPointer() {
-        directionPointer.image = UIImage(named: "blackTriangle")
-        directionPointer.backgroundColor = .red
-
         if let direction = viewModel.direction {
             switch direction {
             case .ne:
-                directionPointer.rotate(angle: 45)
+                directionPointer.image = UIImage(named: "northEastArrow")
             case .e:
-                directionPointer.rotate(angle: 90)
+                directionPointer.image = UIImage(named: "eastArrow")
             case .se:
-                directionPointer.rotate(angle: 135)
+                directionPointer.image = UIImage(named: "southEastArrow")
             case .s:
-                directionPointer.rotate(angle: 180)
+                directionPointer.image = UIImage(named: "southArrow")
             case .sw:
-                directionPointer.rotate(angle: 225)
+                directionPointer.image = UIImage(named: "southWestArrow")
             case .w:
-                directionPointer.rotate(angle: 270)
+                directionPointer.image = UIImage(named: "westArrow")
             case .nw:
-                directionPointer.rotate(angle: 315)
+                directionPointer.image = UIImage(named: "northWestArrow")
             case .n:
-                directionPointer.rotate(angle: 0)
+                directionPointer.image = UIImage(named: "northArrow")
             case .aero, .unknown:
                 directionPointer.isHidden = true
             }
