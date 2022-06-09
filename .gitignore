@@ -26,6 +26,5 @@ Pods/
 Thumbs.db
 
 # Yandex Map Kit
-YandexMapKit-Info.plist
-PastVu/YandexMapKit-Info.plist
-PastVu/YandexMapKit-Info.plist
+*YandexMapKit-Info.plist
+
