@@ -1,28 +1,30 @@
 //
-//  Model.swift
+//  Photo.swift
 //  PastVu
 //
-//  Created by Apanasenko Mikhail on 11.05.2022.
+//  Created by Михаил Апанасенко on 07.06.22.
 //
 
 import Foundation
 
+// Дополнить свойствами
+
 struct Photo: Codable {
-    let s: Int?
-    let cid: Int
+    let id: Int
     let filePath: String
     let title: String
+    let description: String
+    let year: String
+    let address: String?
     let coordinates: [Double]
-    let yearFrom: Int
-    let yearTo: Int
-    let direction: Direction?
+
 
     enum CodingKeys: String, CodingKey {
-        case s, cid, title
+        case id = "cid"
+        case description = "desc"
         case filePath = "file"
-        case direction = "dir"
         case coordinates = "geo"
-        case yearFrom = "year"
-        case yearTo = "year2"
+        case year = "y"
+        case address, title
     }
 }

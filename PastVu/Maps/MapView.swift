@@ -17,4 +17,5 @@ protocol MapView: UIView {
 
 protocol MapViewDelegate: AnyObject {
     func locationChanged(withCoordinates coordinates: Coordinate, zoom: Int, boundingBox: BoundingBox)
+    func showPhoto(fromPin: PinViewModel)
 }

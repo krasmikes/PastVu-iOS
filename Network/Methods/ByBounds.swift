@@ -57,7 +57,7 @@ struct ByBoundsResponse: Codable {
 
     struct Result: Codable {
         let zoom: Int
-        let photos: [Photo]
+        let photos: [Pin]
         let clusters: [Cluster]
 
         enum CodingKeys: String, CodingKey {

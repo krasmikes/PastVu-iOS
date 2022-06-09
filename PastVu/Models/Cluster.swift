@@ -11,7 +11,7 @@ struct Cluster: Codable {
     let coordinates: [Double]
     let count: Int
 //    let year: Year //year property is unused so far
-    let preview: Photo
+    let preview: Pin
 
     enum CodingKeys: String, CodingKey {
         case coordinates = "geo"

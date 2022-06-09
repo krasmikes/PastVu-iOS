@@ -69,4 +69,8 @@ class MapViewModel {
     func showPins(_ pins: [PinViewModel]) {
         view?.showPins(pins)
     }
+
+    func showPhoto(fromPin pinViewModel: PinViewModel) {
+        delegate?.showPhoto(fromPin: pinViewModel)
+    }
 }

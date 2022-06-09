@@ -12,7 +12,7 @@ class MainViewModel {
 
     weak var view: MainViewController?
 
-    var photos = [Photo]()
+    var photos = [Pin]()
     var clusters = [Cluster]()
     
     var provider: MapProvider
@@ -44,7 +44,7 @@ class MainViewModel {
         view?.mapView.viewModel.moveToCurrentLocation()
     }
 
-    func updatePhotosAndClusters(photos: [Photo], clusters: [Cluster]) {
+    func updatePhotosAndClusters(photos: [Pin], clusters: [Cluster]) {
         self.photos = photos
         self.clusters = clusters
         DispatchQueue.main.async { [weak self] in
@@ -112,5 +112,9 @@ extension MainViewModel: MapViewDelegate {
                 print(error) // обработать ошибку
             }
         }
+    }
+
+    func showPhoto(fromPin pinViewModel: PinViewModel) {
+        view?.showPhoto(fromPin: pinViewModel)
     }
 }

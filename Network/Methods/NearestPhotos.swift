@@ -62,6 +62,6 @@ struct NearestPhotosResponse: Codable {
     let rid: String
 
     struct Result: Codable {
-        let photos: [Photo]
+        let photos: [Pin]
     }
 }

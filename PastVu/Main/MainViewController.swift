@@ -100,4 +100,11 @@ class MainViewController: UIViewController {
 
         viewModel.viewDidLoad()
     }
+
+    func showPhoto(fromPin pinViewModel: PinViewModel) {
+        let photoView = PhotoView(fromPinViewModel: pinViewModel)
+        photoView.modalPresentationStyle = .automatic
+
+        navigationController?.present(photoView, animated: true)
+    }
 }

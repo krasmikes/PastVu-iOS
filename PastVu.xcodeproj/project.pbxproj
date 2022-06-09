@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */; };
+		29447908284FA03C00EC55E0 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29447907284FA03C00EC55E0 /* PhotoView.swift */; };
+		2944790B284FA06700EC55E0 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790A284FA06700EC55E0 /* PhotoViewModel.swift */; };
+		2944790D284FAA9D00EC55E0 /* GiveForPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790C284FAA9D00EC55E0 /* GiveForPage.swift */; };
+		2944790F284FCCE700EC55E0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790E284FCCE700EC55E0 /* Photo.swift */; };
 		297564BD2825068F006840E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BC2825068F006840E7 /* AppDelegate.swift */; };
 		297564BF2825068F006840E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BE2825068F006840E7 /* SceneDelegate.swift */; };
 		297564C12825068F006840E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564C02825068F006840E7 /* MainViewController.swift */; };
@@ -15,7 +19,7 @@
 		297564C928250691006840E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297564C728250691006840E7 /* LaunchScreen.storyboard */; };
 		297564D128250801006840E7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564D028250801006840E7 /* NetworkService.swift */; };
 		297564D3282BE51A006840E7 /* NearestPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564D2282BE51A006840E7 /* NearestPhotos.swift */; };
-		297564D7282C01B4006840E7 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564D6282C01B4006840E7 /* Photo.swift */; };
+		297564D7282C01B4006840E7 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564D6282C01B4006840E7 /* Pin.swift */; };
 		297564DB282D01DC006840E7 /* PastVuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564DA282D01DC006840E7 /* PastVuAPI.swift */; };
 		2999D5D6283638DA00195246 /* ByBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2999D5D5283638DA00195246 /* ByBounds.swift */; };
 		2999D5D928363F9200195246 /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2999D5D828363F9200195246 /* Polygon.swift */; };
@@ -38,6 +42,10 @@
 /* Begin PBXFileReference section */
 		0D69E59CAA63A98C346131E7 /* Pods-PastVu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastVu.release.xcconfig"; path = "Target Support Files/Pods-PastVu/Pods-PastVu.release.xcconfig"; sourceTree = "<group>"; };
 		292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
+		29447907284FA03C00EC55E0 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		2944790A284FA06700EC55E0 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
+		2944790C284FAA9D00EC55E0 /* GiveForPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveForPage.swift; sourceTree = "<group>"; };
+		2944790E284FCCE700EC55E0 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		297564B92825068F006840E7 /* PastVu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastVu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297564BC2825068F006840E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		297564BE2825068F006840E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +55,7 @@
 		297564CA28250691006840E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		297564D028250801006840E7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		297564D2282BE51A006840E7 /* NearestPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestPhotos.swift; sourceTree = "<group>"; };
-		297564D6282C01B4006840E7 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		297564D6282C01B4006840E7 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		297564DA282D01DC006840E7 /* PastVuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVuAPI.swift; sourceTree = "<group>"; };
 		2999D5D5283638DA00195246 /* ByBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByBounds.swift; sourceTree = "<group>"; };
 		2999D5D828363F9200195246 /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
@@ -96,6 +104,15 @@
 			path = Extentions;
 			sourceTree = "<group>";
 		};
+		29447909284FA04100EC55E0 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				29447907284FA03C00EC55E0 /* PhotoView.swift */,
+				2944790A284FA06700EC55E0 /* PhotoViewModel.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 		297564B02825068F006840E7 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +138,7 @@
 				297564D9282D01A2006840E7 /* Models */,
 				297564BC2825068F006840E7 /* AppDelegate.swift */,
 				29AAAE102834F519003DDD71 /* Pins */,
+				29447909284FA04100EC55E0 /* Photo */,
 				29C7EA052832679300FA3E30 /* Maps */,
 				297564BE2825068F006840E7 /* SceneDelegate.swift */,
 				29BB54492844D66C00AEFB78 /* Main */,
@@ -145,12 +163,13 @@
 		297564D9282D01A2006840E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				297564D6282C01B4006840E7 /* Photo.swift */,
+				297564D6282C01B4006840E7 /* Pin.swift */,
 				29AAAE13283511E4003DDD71 /* Cluster.swift */,
 				29AAAE112834FAA2003DDD71 /* Direction.swift */,
 				2999D5D828363F9200195246 /* Polygon.swift */,
 				2999D5DA2836479600195246 /* BoundingBox.swift */,
 				29BB54452844AB5200AEFB78 /* Coordinate.swift */,
+				2944790E284FCCE700EC55E0 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				297564D2282BE51A006840E7 /* NearestPhotos.swift */,
+				2944790C284FAA9D00EC55E0 /* GiveForPage.swift */,
 				2999D5D5283638DA00195246 /* ByBounds.swift */,
 			);
 			path = Methods;
@@ -336,9 +356,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				29BB54442844A4CB00AEFB78 /* MapSettings.swift in Sources */,
-				297564D7282C01B4006840E7 /* Photo.swift in Sources */,
+				297564D7282C01B4006840E7 /* Pin.swift in Sources */,
 				29AAAE14283511E4003DDD71 /* Cluster.swift in Sources */,
+				2944790F284FCCE700EC55E0 /* Photo.swift in Sources */,
 				29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */,
+				2944790B284FA06700EC55E0 /* PhotoViewModel.swift in Sources */,
 				29BB544E28474D1900AEFB78 /* PinViewModel.swift in Sources */,
 				29C7EA02283266F400FA3E30 /* MapView.swift in Sources */,
 				29AAAE0D2833FD23003DDD71 /* LocationManager.swift in Sources */,
@@ -350,6 +372,7 @@
 				297564D3282BE51A006840E7 /* NearestPhotos.swift in Sources */,
 				29AAAE0F2834F507003DDD71 /* PinView.swift in Sources */,
 				2999D5DB2836479600195246 /* BoundingBox.swift in Sources */,
+				29447908284FA03C00EC55E0 /* PhotoView.swift in Sources */,
 				29BB54482844D63600AEFB78 /* MainViewModel.swift in Sources */,
 				2999D5D928363F9200195246 /* Polygon.swift in Sources */,
 				292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */,
@@ -358,6 +381,7 @@
 				29AAAE122834FAA2003DDD71 /* Direction.swift in Sources */,
 				29BB54422844950500AEFB78 /* MapViewModel.swift in Sources */,
 				29BB54462844AB5200AEFB78 /* Coordinate.swift in Sources */,
+				2944790D284FAA9D00EC55E0 /* GiveForPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

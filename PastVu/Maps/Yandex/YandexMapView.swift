@@ -79,13 +79,17 @@ class YandexMapView: UIView, MapView {
                     with: YMKPoint(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude),
                     image: viewImage
                 )
-                pin.onPhotoDownloaded = { [weak self] image in // capture list?
-                    DispatchQueue.main.async {
-                        pinView.photoView.image = image
-                        guard let viewImageWithPhoto = self?.convertViewToImage(pinView) else { return }
+                placemark.userData = pin
+                placemark.addTapListener(with: self)
 
-                        placemark.setIconWith(viewImageWithPhoto)
+                if pin.pinType == .cluster {
+                    pin.onPhotoDownloaded = { [weak self] image in // capture list?
+                        DispatchQueue.main.async {
+                            pinView.photoView.image = image
+                            guard let viewImageWithPhoto = self?.convertViewToImage(pinView) else { return }
 
+                            placemark.setIconWith(viewImageWithPhoto)
+                        }
                     }
                 }
             }
@@ -101,6 +105,7 @@ class YandexMapView: UIView, MapView {
     }
 }
 
+// MARK: - YMKMapCameraListner
 extension YandexMapView: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
 
@@ -125,5 +130,25 @@ extension YandexMapView: YMKMapCameraListener {
         let boundingBox = BoundingBox(ne: ne, sw: sw)
 
         viewModel.cameraPositionChanged(with: boundingBox, location: location, zoom: cameraPosition.zoom)
+    }
+}
+
+//MARK: - YMKMapObjectTapListener
+
+extension YandexMapView: YMKMapObjectTapListener {
+    func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
+        guard let placemark = mapObject as? YMKPlacemarkMapObject,
+              let pinViewModel = placemark.userData as? PinViewModel
+        else { return false }
+
+        switch pinViewModel.pinType {
+        case .pin:
+            viewModel.showPhoto(fromPin: pinViewModel)
+            print("--- You just tapped a pin with year \(pinViewModel.year) ---")
+        case .cluster:
+            print("--- You just tapped a cluster with year \(pinViewModel.year) and photos count \(pinViewModel.count ?? "zero")")
+        }
+
+        return true
     }
 }
