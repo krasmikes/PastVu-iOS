@@ -12,6 +12,7 @@
 		2944790B284FA06700EC55E0 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790A284FA06700EC55E0 /* PhotoViewModel.swift */; };
 		2944790D284FAA9D00EC55E0 /* GiveForPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790C284FAA9D00EC55E0 /* GiveForPage.swift */; };
 		2944790F284FCCE700EC55E0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790E284FCCE700EC55E0 /* Photo.swift */; };
+		29447915285255BB00EC55E0 /* YandexMapKit-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29447914285255BB00EC55E0 /* YandexMapKit-Info.plist */; };
 		297564BD2825068F006840E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BC2825068F006840E7 /* AppDelegate.swift */; };
 		297564BF2825068F006840E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BE2825068F006840E7 /* SceneDelegate.swift */; };
 		297564C12825068F006840E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564C02825068F006840E7 /* MainViewController.swift */; };
@@ -46,6 +47,7 @@
 		2944790A284FA06700EC55E0 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		2944790C284FAA9D00EC55E0 /* GiveForPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveForPage.swift; sourceTree = "<group>"; };
 		2944790E284FCCE700EC55E0 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		29447914285255BB00EC55E0 /* YandexMapKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YandexMapKit-Info.plist"; sourceTree = "<group>"; };
 		297564B92825068F006840E7 /* PastVu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastVu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297564BC2825068F006840E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		297564BE2825068F006840E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				297564C528250691006840E7 /* Assets.xcassets */,
 				297564C728250691006840E7 /* LaunchScreen.storyboard */,
 				297564CA28250691006840E7 /* Info.plist */,
+				29447914285255BB00EC55E0 /* YandexMapKit-Info.plist */,
 				292EE22B2848ADD500CB27C9 /* Extentions */,
 			);
 			path = PastVu;
@@ -301,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29447915285255BB00EC55E0 /* YandexMapKit-Info.plist in Resources */,
 				297564C928250691006840E7 /* LaunchScreen.storyboard in Resources */,
 				297564C628250691006840E7 /* Assets.xcassets in Resources */,
 			);
