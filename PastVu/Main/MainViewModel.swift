@@ -108,8 +108,8 @@ extension MainViewModel: MapViewDelegate {
             switch result {
             case .success(let response):
                 self?.updatePhotosAndClusters(photos: response.result.photos, clusters: response.result.clusters)
-            case .failure(let error):
-                print(error) // обработать ошибку
+            case .failure(_):
+                print("--- ERROR OCCURED IN MAINVIEWMODEL BYBOUNDSREQUEST ---") // обработать ошибку
             }
         }
     }

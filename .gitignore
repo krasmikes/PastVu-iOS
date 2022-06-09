@@ -24,3 +24,8 @@ Pods/
 .DS_Store
 .Trashes
 Thumbs.db
+
+# Yandex Map Kit
+YandexMapKit-Info.plist
+PastVu/YandexMapKit-Info.plist
+PastVu/YandexMapKit-Info.plist

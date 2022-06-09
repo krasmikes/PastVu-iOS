@@ -46,7 +46,7 @@ class PinViewModel {
             case.success(let image):
                 self?.onPhotoDownloaded?(image)
             case .failure(_): // сделать ошибку
-                print("--- ERROR: COULDN'T GET PHOTO ---")
+                print("--- ERROR: COULDN'T GET PREVIEW PHOTO OF CLUSTER ---")
             }
         }
     }

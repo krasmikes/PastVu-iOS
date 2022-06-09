@@ -31,6 +31,13 @@ class PhotoView: UIViewController {
         view = UIView()
         view.backgroundColor = .gray
 
+        photoView.contentMode = .scaleAspectFit
+
+        photoTitle.numberOfLines = 0
+
+        photoDescription.numberOfLines = 0
+
+
         [
             photoView,
             photoTitle,
@@ -46,7 +53,7 @@ class PhotoView: UIViewController {
             photoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             photoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             photoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            photoView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            photoView.heightAnchor.constraint(lessThanOrEqualToConstant: 200),
 
             photoTitle.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 10),
             photoTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),

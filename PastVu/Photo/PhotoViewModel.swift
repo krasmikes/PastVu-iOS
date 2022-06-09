@@ -27,8 +27,8 @@ class PhotoViewModel {
                 switch result {
                 case .success(let response):
                     self?.photo = response.result.photo
-                case .failure(let error):
-                    print("--- ERROR OCCURED: \(error) ---")
+                case .failure(_):
+                    print("--- ERROR OCCURED IN PHOTOVIEWMODEL GETDATA ---")
                 }
             }
     }
@@ -52,8 +52,8 @@ class PhotoViewModel {
                     DispatchQueue.main.async { [weak self] in
                         self?.view?.photoView.image = image
                     }
-                case .failure(let error):
-                    print("--- ERROR OCCURED WITH IMAGE: \(error) ---")
+                case .failure(_):
+                    print("--- ERROR OCCURED IN PHOTOVIEWMODEL LOADPHOTOIMAGE ---")
                 }
             }
     }
