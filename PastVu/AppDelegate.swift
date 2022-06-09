@@ -12,7 +12,7 @@ import YandexMapsMobile
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+        if let path = Bundle.main.path(forResource: "YandexMapKit-Info", ofType: "plist"),
            let dict = NSDictionary(contentsOfFile: path),
            let apiKey = dict["API_KEY"] as? String {
             YMKMapKit.setApiKey(apiKey)
