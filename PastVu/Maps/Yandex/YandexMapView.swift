@@ -153,7 +153,7 @@ extension YandexMapView: YMKMapObjectTapListener {
             viewModel.showPhoto(fromPin: pinViewModel)
             print("--- You just tapped a pin with year \(pinViewModel.year) ---")
         case .cluster:
-            print("--- You just tapped a cluster with year \(pinViewModel.year) and photos count \(pinViewModel.count ?? "zero")")
+            viewModel.zoomIn(at: pinViewModel.coordinates)
         }
 
         return true

@@ -220,8 +220,8 @@
 			children = (
 				29C7EA01283266F400FA3E30 /* MapView.swift */,
 				29BB54412844950500AEFB78 /* MapViewModel.swift */,
-				29BB544C28460AAD00AEFB78 /* Yandex */,
 				29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */,
+				29BB544C28460AAD00AEFB78 /* Yandex */,
 			);
 			path = Maps;
 			sourceTree = "<group>";

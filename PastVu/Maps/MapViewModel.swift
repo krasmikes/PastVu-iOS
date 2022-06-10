@@ -55,6 +55,12 @@ class MapViewModel {
         view?.moveTo(coordinates: location, zoom: zoom)
     }
 
+    func zoomIn(at coordinates: Coordinate) {
+        zoom += 1
+        location = coordinates
+        view?.moveTo(coordinates: location, zoom: zoom)
+    }
+
     func zoomOut() {
         zoom -= 1
         view?.moveTo(coordinates: location, zoom: zoom)
