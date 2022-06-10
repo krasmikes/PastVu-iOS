@@ -99,7 +99,8 @@ extension MainViewModel: MapViewDelegate {
                 startFrom: .bottomLeftCounterClockWise,
                 isCoordinatesReversed: true
             ),
-            zoom: zoom
+            zoom: zoom,
+            localWork: zoom >= 17
         )
 
         let request = ByBoundsRequest(params: parameters)
