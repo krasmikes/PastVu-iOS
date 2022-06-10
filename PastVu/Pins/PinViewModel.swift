@@ -10,6 +10,7 @@ import UIKit
 
 class PinViewModel {
     weak var view: PinView?
+    weak var placemark: ClusterPlacemark?
     private let networkService = NetworkService.shared
 
     let pinType: PinType

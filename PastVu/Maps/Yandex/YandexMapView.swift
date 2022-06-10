@@ -11,6 +11,7 @@ import CoreLocation
 
 class YandexMapView: UIView, MapView {
     var viewModel: MapViewModel
+    var currentPins = [PinView]()
 
 #if targetEnvironment(simulator)
     private let view = YMKMapView(frame: .zero, vulkanPreferred: true)!
@@ -71,6 +72,7 @@ class YandexMapView: UIView, MapView {
     func showPins(_ pins: [PinViewModel]) {
         let mapObjects = view.mapWindow.map.mapObjects
         mapObjects.clear()
+        currentPins = []
 
         for pin in pins {
             let pinView = PinView(viewModel: pin)
@@ -81,12 +83,17 @@ class YandexMapView: UIView, MapView {
                 )
                 placemark.userData = pin
                 placemark.addTapListener(with: self)
+                currentPins.append(pinView)
 
                 if pin.pinType == .cluster {
-                    pin.onPhotoDownloaded = { [weak self] image in // capture list?
+                    pin.placemark = placemark
+                    pin.onPhotoDownloaded = { [weak self] image in
                         DispatchQueue.main.async {
-                            pinView.photoView.image = image
-                            guard let viewImageWithPhoto = self?.convertViewToImage(pinView) else { return }
+                            pin.view?.photoView.image = image
+                            guard let pinView = pin.view,
+                                  let viewImageWithPhoto = self?.convertViewToImage(pinView),
+                                  let placemark = pin.placemark as? YMKPlacemarkMapObject
+                            else { return }
 
                             placemark.setIconWith(viewImageWithPhoto)
                         }

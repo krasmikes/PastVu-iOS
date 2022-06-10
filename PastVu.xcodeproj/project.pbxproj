@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29194AE328538E9E00ED8D68 /* ClusterPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */; };
 		292E6A9F2852852B00248068 /* YandexMapKit-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292E6A9E2852852B00248068 /* YandexMapKit-Info.plist */; };
 		292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */; };
 		29447908284FA03C00EC55E0 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29447907284FA03C00EC55E0 /* PhotoView.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		0D69E59CAA63A98C346131E7 /* Pods-PastVu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastVu.release.xcconfig"; path = "Target Support Files/Pods-PastVu/Pods-PastVu.release.xcconfig"; sourceTree = "<group>"; };
+		29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterPlacemark.swift; sourceTree = "<group>"; };
 		292E6A9E2852852B00248068 /* YandexMapKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YandexMapKit-Info.plist"; sourceTree = "<group>"; };
 		292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
 		29447907284FA03C00EC55E0 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				29C7EA01283266F400FA3E30 /* MapView.swift */,
 				29BB54412844950500AEFB78 /* MapViewModel.swift */,
 				29BB544C28460AAD00AEFB78 /* Yandex */,
+				29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				29AAAE0D2833FD23003DDD71 /* LocationManager.swift in Sources */,
 				297564D128250801006840E7 /* NetworkService.swift in Sources */,
 				2999D5D6283638DA00195246 /* ByBounds.swift in Sources */,
+				29194AE328538E9E00ED8D68 /* ClusterPlacemark.swift in Sources */,
 				297564C12825068F006840E7 /* MainViewController.swift in Sources */,
 				297564BD2825068F006840E7 /* AppDelegate.swift in Sources */,
 				29C7EA042832677700FA3E30 /* YandexMapView.swift in Sources */,
