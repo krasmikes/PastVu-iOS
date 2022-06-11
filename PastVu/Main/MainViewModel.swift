@@ -13,7 +13,7 @@ class MainViewModel {
     weak var view: MainViewController?
 
     var photos = [Pin]()
-    var clusters = [Cluster]()
+    var clusters: [Cluster]? = nil
     
     var provider: MapProvider
     var location: Coordinate
@@ -44,7 +44,7 @@ class MainViewModel {
         view?.mapView.viewModel.moveToCurrentLocation()
     }
 
-    func updatePhotosAndClusters(photos: [Pin], clusters: [Cluster]) {
+    func updatePhotosAndClusters(photos: [Pin], clusters: [Cluster]?) {
         self.photos = photos
         self.clusters = clusters
         DispatchQueue.main.async { [weak self] in
@@ -54,7 +54,8 @@ class MainViewModel {
 
     func updateUI() {
         var pins = [PinViewModel]()
-        if !clusters.isEmpty {
+        if let clusters = clusters,
+           !clusters.isEmpty {
             pins.append(
                 contentsOf: clusters.map { cluster in
                     PinViewModel(

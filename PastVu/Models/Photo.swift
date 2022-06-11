@@ -13,7 +13,7 @@ struct Photo: Codable {
     let id: Int
     let filePath: String
     let title: String
-    let description: String
+    let description: String?
     let year: String
     let address: String?
     let coordinates: [Double]
