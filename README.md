@@ -17,4 +17,4 @@ _(see more at [apple.com](https://developer.apple.com/documentation/xcode/runnin
 7. Run PastVu & enjoy retro photos!
 
 ## Contact
-For any questions and proposals feel free to contact me through [email](mailto:mvapanasenko@gmail.com) or [telegram](https://t.me/krasmikes)
+For any questions and proposals feel free to contact me through [email](mailto:mvapanasenko+github@gmail.com) or [telegram](https://t.me/krasmikes)
