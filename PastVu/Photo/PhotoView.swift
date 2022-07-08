@@ -31,6 +31,9 @@ class PhotoView: UIViewController {
         view = UIView()
         view.backgroundColor = .gray
 
+        photoView.isUserInteractionEnabled = true
+        let photoViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoViewTapped))
+        photoView.addGestureRecognizer(photoViewTapGestureRecognizer)
         photoView.contentMode = .scaleAspectFit
 
         photoTitle.numberOfLines = 0
@@ -71,5 +74,13 @@ class PhotoView: UIViewController {
             address.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             address.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
         ].forEach { $0.isActive = true }
+    }
+
+    @objc func photoViewTapped(_ sender: UITapGestureRecognizer) {
+        guard let image = viewModel.photoImage else { return }
+
+        let fullscreenPhotoVC = FullscreenPhotoViewController(with: image)
+        fullscreenPhotoVC.modalPresentationStyle = .automatic
+        navigationController?.pushViewController(fullscreenPhotoVC, animated: true)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PhotoViewModel {
     weak var view: PhotoView?
@@ -17,6 +18,8 @@ class PhotoViewModel {
             loadPhotoImage()
         }
     }
+
+    var photoImage: UIImage?
 
     func getData(id: Int) {
         let request = GiveForPage(
@@ -51,6 +54,7 @@ class PhotoViewModel {
                 case .success(let image):
                     DispatchQueue.main.async { [weak self] in
                         self?.view?.photoView.image = image
+                        self?.photoImage = image
                     }
                 case .failure(_):
                     print("--- ERROR OCCURED IN PHOTOVIEWMODEL LOADPHOTOIMAGE ---")

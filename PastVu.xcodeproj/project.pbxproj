@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2902B5AA2855F47F00508D08 /* FullscreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902B5A92855F47F00508D08 /* FullscreenPhotoViewController.swift */; };
 		29194AE328538E9E00ED8D68 /* ClusterPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */; };
 		292E6A9F2852852B00248068 /* YandexMapKit-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292E6A9E2852852B00248068 /* YandexMapKit-Info.plist */; };
 		292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		0D69E59CAA63A98C346131E7 /* Pods-PastVu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastVu.release.xcconfig"; path = "Target Support Files/Pods-PastVu/Pods-PastVu.release.xcconfig"; sourceTree = "<group>"; };
+		2902B5A92855F47F00508D08 /* FullscreenPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPhotoViewController.swift; sourceTree = "<group>"; };
 		29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterPlacemark.swift; sourceTree = "<group>"; };
 		292E6A9E2852852B00248068 /* YandexMapKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YandexMapKit-Info.plist"; sourceTree = "<group>"; };
 		292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				29447907284FA03C00EC55E0 /* PhotoView.swift */,
 				2944790A284FA06700EC55E0 /* PhotoViewModel.swift */,
+				2902B5A92855F47F00508D08 /* FullscreenPhotoViewController.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				29BB54442844A4CB00AEFB78 /* MapSettings.swift in Sources */,
 				297564D7282C01B4006840E7 /* Pin.swift in Sources */,
 				29AAAE14283511E4003DDD71 /* Cluster.swift in Sources */,
+				2902B5AA2855F47F00508D08 /* FullscreenPhotoViewController.swift in Sources */,
 				2944790F284FCCE700EC55E0 /* Photo.swift in Sources */,
 				29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */,
 				2944790B284FA06700EC55E0 /* PhotoViewModel.swift in Sources */,

@@ -103,8 +103,8 @@ class MainViewController: UIViewController {
 
     func showPhoto(fromPin pinViewModel: PinViewModel) {
         let photoView = PhotoView(fromPinViewModel: pinViewModel)
-        photoView.modalPresentationStyle = .automatic
-
-        navigationController?.present(photoView, animated: true)
+        let photoViewNC = UINavigationController(rootViewController: photoView)
+        photoViewNC.modalPresentationStyle = .automatic
+        navigationController?.present(photoViewNC, animated: true)
     }
 }
