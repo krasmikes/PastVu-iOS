@@ -18,6 +18,7 @@ class FullscreenPhotoViewController: UIViewController {
     var bottom: NSLayoutConstraint!
 
     var maxZoomScale: CGFloat = 1.0
+    var isStatusBarHidden = false
 
     init(with image: UIImage) {
         imageView.image = image
@@ -39,6 +40,12 @@ class FullscreenPhotoViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         navigationController?.navigationBar.compactAppearance = navigationBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        
+        let leftBarItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeButtonTapped))
+        self.navigationItem.leftBarButtonItem = leftBarItem
+
+        let oneTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showHideNavigationBar))
+        view.addGestureRecognizer(oneTapGestureRecognizer)
 
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
@@ -75,6 +82,25 @@ class FullscreenPhotoViewController: UIViewController {
         super.viewWillLayoutSubviews()
         updateConstraintsForSize(view.bounds.size)
         updateMinMaxZoomScaleForSize(view.bounds.size)
+    }
+
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return isStatusBarHidden
+    }
+
+    @objc func closeButtonTapped() {
+        navigationController?.dismiss(animated: true)
+    }
+
+    @objc func showHideNavigationBar() {
+        isStatusBarHidden.toggle()
+        setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(navigationController?.isNavigationBarHidden ?? true ? false : true, animated: true)
+
     }
 }
 

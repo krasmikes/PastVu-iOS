@@ -79,8 +79,10 @@ class PhotoView: UIViewController {
     @objc func photoViewTapped(_ sender: UITapGestureRecognizer) {
         guard let image = viewModel.photoImage else { return }
 
-        let fullscreenPhotoVC = FullscreenPhotoViewController(with: image)
-        fullscreenPhotoVC.modalPresentationStyle = .automatic
-        navigationController?.pushViewController(fullscreenPhotoVC, animated: true)
+        let fullScreenPhotoVC = FullscreenPhotoViewController(with: image)
+        let fullScreenPhotoNC = UINavigationController(rootViewController: fullScreenPhotoVC)
+        fullScreenPhotoNC.modalPresentationStyle = .fullScreen
+        fullScreenPhotoNC.modalTransitionStyle = .crossDissolve
+        navigationController?.present(fullScreenPhotoNC, animated: true)
     }
 }
