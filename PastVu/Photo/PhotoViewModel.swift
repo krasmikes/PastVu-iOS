@@ -37,25 +37,17 @@ class PhotoViewModel {
     }
 
     private func updateViewTextFields() {
-        DispatchQueue.main.async { [weak self] in
-            guard let `self` = self else { return }
-            self.view?.photoTitle.text = self.photo?.title
-            self.view?.photoDescription.text = self.photo?.description
-            self.view?.year.text = self.photo?.year
-            self.view?.address.text = self.photo?.address
-        }
+        view?.updateInfo()
     }
 
     private func loadPhotoImage () {
         guard let photoUrl = photo?.filePath else { return }
         networkService.loadImage(
-            path: photoUrl) { result in
+            path: photoUrl) { [weak self] result in
                 switch result {
                 case .success(let image):
-                    DispatchQueue.main.async { [weak self] in
-                        self?.view?.photoView.image = image
-                        self?.photoImage = image
-                    }
+                    self?.view?.updatePhoto(image)
+                    self?.photoImage = image
                 case .failure(_):
                     print("--- ERROR OCCURED IN PHOTOVIEWMODEL LOADPHOTOIMAGE ---")
                 }

@@ -7,14 +7,29 @@
 
 import UIKit
 
-class PhotoView: UIViewController {
+protocol PhotoView: UIViewController {
+    func updateInfo()
+    func updatePhoto(_ image: UIImage)
+}
+
+class PhotoViewImpl: UIViewController {
     var viewModel: PhotoViewModel
 
-    let photoView = UIImageView(frame: .zero)
-    let photoTitle = UILabel(frame: .zero)
-    let photoDescription = UILabel(frame: .zero)
-    let year = UILabel(frame: .zero)
-    let address = UILabel(frame: .zero)
+    private let photoView = UIImageView(frame: .zero)
+    private let photoScrollView = UIScrollView(frame: .zero)
+
+    private let infoContainerView = UIView(frame: .zero)
+    private let infoScrollView = UIScrollView(frame: .zero)
+    private let infoTitle = UILabel(frame: .zero)
+    private let infoDescription = UILabel(frame: .zero)
+    private let infoYear = UILabel(frame: .zero)
+    private let infoAddress = UILabel(frame: .zero)
+
+    private var photoViewTopConstraint: NSLayoutConstraint!
+    private var photoViewLeadingConstraint: NSLayoutConstraint!
+    private var photoViewTrailingConstraint: NSLayoutConstraint!
+    private var photoViewBottomConstraint: NSLayoutConstraint!
+    private var infoContainerViewTopConstraint: NSLayoutConstraint!
 
     init(fromPinViewModel pinViewModel: PinViewModel) {
         viewModel = PhotoViewModel()
@@ -31,58 +46,175 @@ class PhotoView: UIViewController {
         view = UIView()
         view.backgroundColor = .gray
 
-        photoView.isUserInteractionEnabled = true
-        let photoViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoViewTapped))
-        photoView.addGestureRecognizer(photoViewTapGestureRecognizer)
+        // Navigation Bar Settings
+        photoScrollView.contentInsetAdjustmentBehavior = .never
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithTransparentBackground()
+        navigationBarAppearance.backgroundEffect = .none
+        navigationBarAppearance.backgroundColor = .black.withAlphaComponent(0.3)
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.compactAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        let leftBarItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeButtonTapped))
+        self.navigationItem.leftBarButtonItem = leftBarItem
+        let oneTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleInfoAndNavBarPresence))
+        photoScrollView.addGestureRecognizer(oneTapGestureRecognizer)
+
+        // Info Container Settings
+        infoContainerView.backgroundColor = .white
+        infoTitle.numberOfLines = 2
+        infoDescription.numberOfLines = 0
+
+        // Photo Scroll View Settings
+        photoView.translatesAutoresizingMaskIntoConstraints = false
         photoView.contentMode = .scaleAspectFit
+        photoScrollView.addSubview(photoView)
+        photoScrollView.delegate = self
+        photoScrollView.contentMode = .scaleToFill
 
-        photoTitle.numberOfLines = 0
-
-        photoDescription.numberOfLines = 0
-
-
+        // Views Arrangement
         [
-            photoView,
-            photoTitle,
-            photoDescription,
-            year,
-            address
+            photoScrollView,
+            infoContainerView,
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
 
+        infoScrollView.translatesAutoresizingMaskIntoConstraints = false
+        infoContainerView.addSubview(infoScrollView)
+
         [
-            photoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            photoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            photoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            photoView.heightAnchor.constraint(lessThanOrEqualToConstant: 200),
+            infoTitle,
+            infoDescription,
+            infoYear,
+            infoAddress
+        ].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            infoScrollView.addSubview($0)
+        }
 
-            photoTitle.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 10),
-            photoTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            photoTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
+        // Constraints
+        photoViewTopConstraint = photoView.topAnchor.constraint(equalTo: photoScrollView.topAnchor)
+        photoViewLeadingConstraint = photoView.leadingAnchor.constraint(equalTo: photoScrollView.leadingAnchor)
+        photoViewTrailingConstraint = photoScrollView.trailingAnchor.constraint(equalTo: photoView.trailingAnchor)
+        photoViewBottomConstraint = photoScrollView.bottomAnchor.constraint(equalTo: photoView.bottomAnchor)
 
-            photoDescription.topAnchor.constraint(equalTo: photoTitle.bottomAnchor, constant: 10),
-            photoDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            photoDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
+        infoContainerViewTopConstraint = infoContainerView.topAnchor.constraint(equalTo: view.topAnchor)
 
-            year.topAnchor.constraint(equalTo: photoDescription.bottomAnchor, constant: 10),
-            year.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            year.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
+        [
+            photoScrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            photoScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            photoScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            photoScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            address.topAnchor.constraint(equalTo: year.bottomAnchor, constant: 10),
-            address.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            address.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
+            infoContainerViewTopConstraint,
+            infoContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            infoContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            infoContainerView.heightAnchor.constraint(equalTo: view.heightAnchor),
+
+            photoViewTopConstraint,
+            photoViewLeadingConstraint,
+            photoViewTrailingConstraint,
+            photoViewBottomConstraint,
+
+            infoScrollView.topAnchor.constraint(equalTo: infoContainerView.topAnchor),
+            infoScrollView.leadingAnchor.constraint(equalTo: infoContainerView.leadingAnchor),
+            infoScrollView.trailingAnchor.constraint(equalTo: infoContainerView.trailingAnchor),
+            infoScrollView.bottomAnchor.constraint(equalTo: infoContainerView.bottomAnchor),
+
+            infoTitle.topAnchor.constraint(equalTo: infoScrollView.topAnchor, constant: 10),
+            infoTitle.leadingAnchor.constraint(equalTo: infoContainerView.leadingAnchor, constant: 10),
+            infoTitle.trailingAnchor.constraint(equalTo: infoContainerView.trailingAnchor, constant: 10),
+
+            infoDescription.topAnchor.constraint(equalTo: infoTitle.bottomAnchor, constant: 10),
+            infoDescription.leadingAnchor.constraint(equalTo: infoTitle.leadingAnchor),
+            infoDescription.trailingAnchor.constraint(equalTo: infoTitle.trailingAnchor),
+
+            infoYear.topAnchor.constraint(equalTo: infoDescription.bottomAnchor, constant: 10),
+            infoYear.leadingAnchor.constraint(equalTo: infoDescription.leadingAnchor),
+            infoYear.trailingAnchor.constraint(equalTo: infoDescription.trailingAnchor),
+
+            infoAddress.topAnchor.constraint(equalTo: infoYear.bottomAnchor, constant: 10),
+            infoAddress.leadingAnchor.constraint(equalTo: infoYear.leadingAnchor),
+            infoAddress.trailingAnchor.constraint(equalTo: infoYear.trailingAnchor),
         ].forEach { $0.isActive = true }
     }
 
-    @objc func photoViewTapped(_ sender: UITapGestureRecognizer) {
-        guard let image = viewModel.photoImage else { return }
-
-        let fullScreenPhotoVC = FullscreenPhotoViewController(with: image)
-        let fullScreenPhotoNC = UINavigationController(rootViewController: fullScreenPhotoVC)
-        fullScreenPhotoNC.modalPresentationStyle = .fullScreen
-        fullScreenPhotoNC.modalTransitionStyle = .crossDissolve
-        navigationController?.present(fullScreenPhotoNC, animated: true)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateScrollConstraintsForSize(view.bounds.size)
+        updateMinMaxZoomScaleForSize(view.bounds.size)
+        infoContainerViewTopConstraint.constant = view.bounds.size.height * 0.75
     }
+
+    @objc func closeButtonTapped() {
+        navigationController?.dismiss(animated: true)
+    }
+
+    @objc func toggleInfoAndNavBarPresence() {
+        navigationController?.setNavigationBarHidden(navigationController?.isNavigationBarHidden ?? true ? false : true, animated: true)
+        infoContainerView.isHidden.toggle()
+    }
+}
+
+// MARK: - Photo Scroll View Handeling
+extension PhotoViewImpl: UIScrollViewDelegate {
+    func updateMinMaxZoomScaleForSize(_ size: CGSize) {
+        guard photoView.bounds.width != 0,
+              photoView.bounds.height != 0 else { return }
+
+        let minScale = min(
+            size.width / photoView.bounds.width,
+            size.height / photoView.bounds.height)
+        let maxScale = max(
+            (size.width + 1.0) / photoView.bounds.width,
+            (size.height + 1.0) / photoView.bounds.height)
+
+        photoScrollView.minimumZoomScale = minScale
+        photoScrollView.zoomScale = minScale
+        photoScrollView.maximumZoomScale = maxScale * 1.1
+    }
+
+    func updateScrollConstraintsForSize(_ size: CGSize) {
+        let yOffset = max(0, (size.height - photoView.frame.height) / 2)
+        photoViewTopConstraint.constant = yOffset
+        photoViewBottomConstraint.constant = yOffset
+
+        let xOffset = max(0, (size.width - photoView.frame.width) / 2)
+        photoViewLeadingConstraint.constant = xOffset
+        photoViewTrailingConstraint.constant = xOffset
+        view.layoutIfNeeded()
+    }
+
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return photoView
+    }
+
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        updateScrollConstraintsForSize(view.bounds.size)
+    }
+}
+
+extension PhotoViewImpl: PhotoView {
+    func updateInfo() {
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
+
+            self.infoTitle.text = self.viewModel.photo?.title
+            self.infoDescription.text = self.viewModel.photo?.description
+            self.infoYear.text = self.viewModel.photo?.year
+            self.infoAddress.text = self.viewModel.photo?.address
+        }
+    }
+
+    func updatePhoto(_ image: UIImage) {
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
+
+            self.photoView.image = image
+        }
+    }
+
+
 }
