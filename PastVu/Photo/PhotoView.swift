@@ -44,14 +44,14 @@ class PhotoViewImpl: UIViewController {
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = .black
 
         // Navigation Bar Settings
         photoScrollView.contentInsetAdjustmentBehavior = .never
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithTransparentBackground()
         navigationBarAppearance.backgroundEffect = .none
-        navigationBarAppearance.backgroundColor = .black.withAlphaComponent(0.3)
+        navigationBarAppearance.backgroundColor = .black.withAlphaComponent(0.5)
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         navigationController?.navigationBar.compactAppearance = navigationBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
@@ -61,9 +61,17 @@ class PhotoViewImpl: UIViewController {
         photoScrollView.addGestureRecognizer(oneTapGestureRecognizer)
 
         // Info Container Settings
-        infoContainerView.backgroundColor = .white
+        infoContainerView.backgroundColor = .black.withAlphaComponent(0.5)
+
         infoTitle.numberOfLines = 2
+        infoTitle.textColor = .white
+
         infoDescription.numberOfLines = 0
+        infoDescription.textColor = .white
+
+        infoYear.textColor = .white
+
+        infoAddress.textColor = .white
 
         // Photo Scroll View Settings
         photoView.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +133,7 @@ class PhotoViewImpl: UIViewController {
 
             infoTitle.topAnchor.constraint(equalTo: infoScrollView.topAnchor, constant: 10),
             infoTitle.leadingAnchor.constraint(equalTo: infoContainerView.leadingAnchor, constant: 10),
-            infoTitle.trailingAnchor.constraint(equalTo: infoContainerView.trailingAnchor, constant: 10),
+            infoTitle.trailingAnchor.constraint(equalTo: infoContainerView.trailingAnchor, constant: -10),
 
             infoDescription.topAnchor.constraint(equalTo: infoTitle.bottomAnchor, constant: 10),
             infoDescription.leadingAnchor.constraint(equalTo: infoTitle.leadingAnchor),
@@ -173,7 +181,7 @@ extension PhotoViewImpl: UIScrollViewDelegate {
 
         photoScrollView.minimumZoomScale = minScale
         photoScrollView.zoomScale = minScale
-        photoScrollView.maximumZoomScale = maxScale * 1.1
+        photoScrollView.maximumZoomScale = maxScale * 2
     }
 
     func updateScrollConstraintsForSize(_ size: CGSize) {
