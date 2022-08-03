@@ -14,6 +14,8 @@
 		2944790B284FA06700EC55E0 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790A284FA06700EC55E0 /* PhotoViewModel.swift */; };
 		2944790D284FAA9D00EC55E0 /* GiveForPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790C284FAA9D00EC55E0 /* GiveForPage.swift */; };
 		2944790F284FCCE700EC55E0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790E284FCCE700EC55E0 /* Photo.swift */; };
+		2947DEDB288AA7A7006735B2 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2947DEDA288AA7A7006735B2 /* RangeSlider.swift */; };
+		2947DEDF288C1B42006735B2 /* Int+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2947DEDE288C1B41006735B2 /* Int+CGFloat.swift */; };
 		294A0D6F28870474005D0593 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294A0D6E28870474005D0593 /* UIView+AddSubviews.swift */; };
 		297564BD2825068F006840E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BC2825068F006840E7 /* AppDelegate.swift */; };
 		297564BF2825068F006840E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BE2825068F006840E7 /* SceneDelegate.swift */; };
@@ -24,6 +26,7 @@
 		297564D3282BE51A006840E7 /* NearestPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564D2282BE51A006840E7 /* NearestPhotos.swift */; };
 		297564D7282C01B4006840E7 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564D6282C01B4006840E7 /* Pin.swift */; };
 		297564DB282D01DC006840E7 /* PastVuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564DA282D01DC006840E7 /* PastVuAPI.swift */; };
+		2980722E28992BE600D98568 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980722D28992BE600D98568 /* Constants.swift */; };
 		2999D5D6283638DA00195246 /* ByBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2999D5D5283638DA00195246 /* ByBounds.swift */; };
 		2999D5D928363F9200195246 /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2999D5D828363F9200195246 /* Polygon.swift */; };
 		2999D5DB2836479600195246 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2999D5DA2836479600195246 /* BoundingBox.swift */; };
@@ -39,6 +42,7 @@
 		29C7EA02283266F400FA3E30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA01283266F400FA3E30 /* MapView.swift */; };
 		29C7EA042832677700FA3E30 /* YandexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA032832677700FA3E30 /* YandexMapView.swift */; };
 		29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E794482842462200907A53 /* UserDefaultsManager.swift */; };
+		29F77740288E75620051FCF6 /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7773F288E75620051FCF6 /* RangeSliderTrackLayer.swift */; };
 		3C2304C4107D8133053E0740 /* Pods_PastVu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2144BB56CA3A6FA1AE8B025 /* Pods_PastVu.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +55,8 @@
 		2944790A284FA06700EC55E0 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		2944790C284FAA9D00EC55E0 /* GiveForPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveForPage.swift; sourceTree = "<group>"; };
 		2944790E284FCCE700EC55E0 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		2947DEDA288AA7A7006735B2 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
+		2947DEDE288C1B41006735B2 /* Int+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+CGFloat.swift"; sourceTree = "<group>"; };
 		294A0D6E28870474005D0593 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		297564B92825068F006840E7 /* PastVu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastVu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297564BC2825068F006840E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +69,7 @@
 		297564D2282BE51A006840E7 /* NearestPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestPhotos.swift; sourceTree = "<group>"; };
 		297564D6282C01B4006840E7 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		297564DA282D01DC006840E7 /* PastVuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVuAPI.swift; sourceTree = "<group>"; };
+		2980722D28992BE600D98568 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2999D5D5283638DA00195246 /* ByBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByBounds.swift; sourceTree = "<group>"; };
 		2999D5D828363F9200195246 /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		2999D5DA2836479600195246 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
@@ -78,6 +85,7 @@
 		29C7EA01283266F400FA3E30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		29C7EA032832677700FA3E30 /* YandexMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMapView.swift; sourceTree = "<group>"; };
 		29E794482842462200907A53 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		29F7773F288E75620051FCF6 /* RangeSliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderTrackLayer.swift; sourceTree = "<group>"; };
 		82CD36060E10DDF30A30AC09 /* Pods-PastVu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastVu.debug.xcconfig"; path = "Target Support Files/Pods-PastVu/Pods-PastVu.debug.xcconfig"; sourceTree = "<group>"; };
 		F2144BB56CA3A6FA1AE8B025 /* Pods_PastVu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PastVu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -107,6 +115,7 @@
 			children = (
 				292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */,
 				294A0D6E28870474005D0593 /* UIView+AddSubviews.swift */,
+				2947DEDE288C1B41006735B2 /* Int+CGFloat.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -204,6 +213,7 @@
 		29BB54492844D66C00AEFB78 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				29F7773E288E75310051FCF6 /* RangeSlider */,
 				297564C02825068F006840E7 /* MainViewController.swift */,
 				29BB54472844D63600AEFB78 /* MainViewModel.swift */,
 			);
@@ -236,9 +246,19 @@
 				297564D8282D0185006840E7 /* Network */,
 				29E794482842462200907A53 /* UserDefaultsManager.swift */,
 				29BB54432844A4CB00AEFB78 /* MapSettings.swift */,
+				2980722D28992BE600D98568 /* Constants.swift */,
 			);
 			name = Services;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		29F7773E288E75310051FCF6 /* RangeSlider */ = {
+			isa = PBXGroup;
+			children = (
+				2947DEDA288AA7A7006735B2 /* RangeSlider.swift */,
+				29F7773F288E75620051FCF6 /* RangeSliderTrackLayer.swift */,
+			);
+			path = RangeSlider;
 			sourceTree = "<group>";
 		};
 		DB8F2F27C58D0F1635B49C6C /* Pods */ = {
@@ -367,6 +387,7 @@
 			files = (
 				29BB54442844A4CB00AEFB78 /* MapSettings.swift in Sources */,
 				297564D7282C01B4006840E7 /* Pin.swift in Sources */,
+				2947DEDF288C1B42006735B2 /* Int+CGFloat.swift in Sources */,
 				29AAAE14283511E4003DDD71 /* Cluster.swift in Sources */,
 				2944790F284FCCE700EC55E0 /* Photo.swift in Sources */,
 				29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */,
@@ -381,12 +402,15 @@
 				297564C12825068F006840E7 /* MainViewController.swift in Sources */,
 				294A0D6F28870474005D0593 /* UIView+AddSubviews.swift in Sources */,
 				297564BD2825068F006840E7 /* AppDelegate.swift in Sources */,
+				2947DEDB288AA7A7006735B2 /* RangeSlider.swift in Sources */,
 				29C7EA042832677700FA3E30 /* YandexMapView.swift in Sources */,
 				297564D3282BE51A006840E7 /* NearestPhotos.swift in Sources */,
 				29AAAE0F2834F507003DDD71 /* PinView.swift in Sources */,
 				2999D5DB2836479600195246 /* BoundingBox.swift in Sources */,
 				29BB54482844D63600AEFB78 /* MainViewModel.swift in Sources */,
+				2980722E28992BE600D98568 /* Constants.swift in Sources */,
 				2999D5D928363F9200195246 /* Polygon.swift in Sources */,
+				29F77740288E75620051FCF6 /* RangeSliderTrackLayer.swift in Sources */,
 				292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */,
 				297564BF2825068F006840E7 /* SceneDelegate.swift in Sources */,
 				297564DB282D01DC006840E7 /* PastVuAPI.swift in Sources */,

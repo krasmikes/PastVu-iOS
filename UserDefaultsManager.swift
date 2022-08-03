@@ -8,6 +8,14 @@
 import Foundation
 import CoreLocation
 
+private enum StorageKeys: String {
+    case mapProvider
+    case lastLocation
+    case lastZoom
+    case lowerYear
+    case upperYear
+}
+
 class UserDefaultsManager {
     static let shared = UserDefaultsManager()
 
@@ -77,9 +85,18 @@ class UserDefaultsManager {
     }
 
 
-    private enum StorageKeys: String {
-        case mapProvider
-        case lastLocation
-        case lastZoom
+    //MARK: - Last Years Boundaries
+
+    func getLastYearsBoundaries() -> (lowerYear: Int, upperYear: Int) {
+        guard let lowerYear = storage.object(forKey: StorageKeys.lowerYear.rawValue) as? Int,
+              let upperYear = storage.object(forKey: StorageKeys.upperYear.rawValue) as? Int else {
+            return (1828, 1998)
+        }
+        return (lowerYear: lowerYear, upperYear: upperYear)
+    }
+
+    func setLastYearsBoundaries(_ boundaries: (lowerYear: Int, upperYear: Int)) {
+        storage.set(boundaries.lowerYear, forKey: StorageKeys.lowerYear.rawValue)
+        storage.set(boundaries.upperYear, forKey: StorageKeys.upperYear.rawValue)
     }
 }
