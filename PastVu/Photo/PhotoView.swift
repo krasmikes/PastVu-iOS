@@ -45,11 +45,17 @@ class PhotoViewImpl: UIViewController {
         label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
-    private let infoDescription: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.numberOfLines = 0
-        label.textColor = .white
-        return label
+    private let infoDescription: UITextView = {
+        let textView = UITextView(frame: .zero)
+        textView.backgroundColor = .clear
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.isScrollEnabled = false
+        textView.textContainerInset = .zero
+        textView.textContainer.lineFragmentPadding = 0
+        textView.textColor = .white
+        textView.font = .systemFont(ofSize: 18)
+        return textView
     }()
     private let infoYear: UILabel = {
         let label = UILabel(frame: .zero)
@@ -235,7 +241,7 @@ extension PhotoViewImpl: PhotoView {
             guard let `self` = self else { return }
 
             self.infoTitle.text = self.viewModel.photo?.title
-            self.infoDescription.text = self.viewModel.photo?.description
+            self.infoDescription.attributedText = self.viewModel.photo?.description?.htmlAttributedString(size: 18, color: .white)
             self.infoYear.text = self.viewModel.photo?.year
             self.infoAddress.text = self.viewModel.photo?.address
         }
@@ -249,8 +255,6 @@ extension PhotoViewImpl: PhotoView {
             self.photoView.image = image
         }
     }
-
-
 }
 
 //MARK: - Info Container Drag Handling
