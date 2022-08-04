@@ -30,6 +30,8 @@ class PhotoViewImpl: UIViewController {
     private var photoViewTrailingConstraint: NSLayoutConstraint!
     private var photoViewBottomConstraint: NSLayoutConstraint!
 
+    private let activityIndicator = UIActivityIndicatorView()
+
     private let infoContainerView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .black.withAlphaComponent(0.5)
@@ -83,7 +85,7 @@ class PhotoViewImpl: UIViewController {
         setGestureRecognizers()
 
         photoScrollView.addSubviews(photoView)
-        view.addSubviews(photoScrollView, infoContainerView)
+        view.addSubviews(photoScrollView, activityIndicator, infoContainerView)
         infoContainerView.addSubviews(infoScrollView, infoTitle)
         infoScrollView.addSubviews(infoDescription, infoYear, infoAddress)
 
@@ -98,6 +100,9 @@ class PhotoViewImpl: UIViewController {
             photoScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             photoScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             photoScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             infoContainerViewTopConstraint,
             infoContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -130,6 +135,7 @@ class PhotoViewImpl: UIViewController {
             infoAddress.leadingAnchor.constraint(equalTo: infoYear.leadingAnchor),
             infoAddress.trailingAnchor.constraint(equalTo: infoYear.trailingAnchor),
         ].forEach { $0.isActive = true }
+        activityIndicator.startAnimating()
     }
 
     override func viewWillLayoutSubviews() {
@@ -239,6 +245,7 @@ extension PhotoViewImpl: PhotoView {
         DispatchQueue.main.async { [weak self] in
             guard let `self` = self else { return }
 
+            self.activityIndicator.stopAnimating()
             self.photoView.image = image
         }
     }
