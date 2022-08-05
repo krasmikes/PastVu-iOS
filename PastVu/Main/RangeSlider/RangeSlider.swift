@@ -85,7 +85,16 @@ class RangeSlider: UIControl {
     func positionForValue(_ value: CGFloat) -> CGFloat {
         let range = maximumValue - minimumValue
         let newValue = (value - minimumValue.cgFloat) / range.cgFloat
-        return bounds.width * newValue
+        let cubicBezierParams = SliderConstants.cubicBezier
+        return bounds.width * cubicBezier(newValue, cubicBezierParams)
+    }
+
+    private func cubicBezier(_ value: CGFloat, _ p: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 1, 1) ) -> CGFloat {
+        let p0 = pow((1-value), 3) * p.0 // (1-t)**3 * P0
+        let p1 = 3 * pow((1 - value), 2) * value * p.1 // t*P1*(3*(1-t)**2)
+        let p2 = 3 * (1 - value) * pow(value, 2) * p.2 // P2*(3*(1-t)*t**2)
+        let p3 = pow(value, 3) * p.3 // P3*t**3
+        return p0 + p1 + p2 + p3
     }
 
     private func thumbOriginForValue(_ value: CGFloat) -> CGPoint {
