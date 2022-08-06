@@ -63,8 +63,9 @@ class RangeSliderTrackLayer: CAGradientLayer {
             0.94,
             1.0
         ]
-        let inactiveGradient = CGGradient(colorsSpace: colorspace, colors: inactiveColors as CFArray, locations: locations)!
-        let activeGradient = CGGradient(colorsSpace: colorspace, colors: activeColors as CFArray, locations: locations)!
+        let cubicBezierLocations: [CGFloat] = locations.map { $0.cubicBezier(SliderConstants.cubicBezier) ?? 0 }
+        let inactiveGradient = CGGradient(colorsSpace: colorspace, colors: inactiveColors as CFArray, locations: cubicBezierLocations)!
+        let activeGradient = CGGradient(colorsSpace: colorspace, colors: activeColors as CFArray, locations: cubicBezierLocations)!
 
         ctx.saveGState()
         ctx.addPath(inactivePath.cgPath)
