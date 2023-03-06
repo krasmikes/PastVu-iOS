@@ -41,17 +41,6 @@ class PinViewModel {
         self.onPhotoDownloaded = onPhotoDownloaded
     }
 
-    func getImage() {
-        networkService.loadImage(path: photo) { [weak self] result in
-            switch result {
-            case.success(let image):
-                self?.onPhotoDownloaded?(image)
-            case .failure(_): // сделать ошибку
-                print("--- ERROR: COULDN'T GET PREVIEW PHOTO OF CLUSTER ---")
-            }
-        }
-    }
-
     enum PinType {
         case pin
         case cluster

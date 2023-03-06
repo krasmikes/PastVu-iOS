@@ -1,5 +1,5 @@
 //
-//  String+HTML.swift
+//  String++.swift
 //  PastVu
 //
 //  Created by Михаил Апанасенко on 04.08.22.
@@ -39,6 +39,11 @@ extension String {
             return nil
         }
         return attributedString
+    }
+    
+    var pastvuURL: URL? {
+        guard let baseUrl = URL(string: "https://pastvu.com/_p/d/") else { return nil }
+        return baseUrl.appendingPathComponent(self)
     }
 }
 

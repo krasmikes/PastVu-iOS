@@ -87,16 +87,13 @@ class YandexMapView: UIView, MapView {
 
                 if pin.pinType == .cluster {
                     pin.placemark = placemark
-                    pin.onPhotoDownloaded = { [weak self] image in
-                        DispatchQueue.main.async {
-                            pin.view?.photoView.image = image
-                            guard let pinView = pin.view,
-                                  let viewImageWithPhoto = self?.convertViewToImage(pinView),
-                                  let placemark = pin.placemark as? YMKPlacemarkMapObject
-                            else { return }
+                    pin.view?.photoView.sd_setImage(with: pin.photo.pastvuURL) { [weak self] _,_,_,_ in
+                        guard let pinView = pin.view,
+                              let viewImageWithPhoto = self?.convertViewToImage(pinView),
+                              let placemark = pin.placemark as? YMKPlacemarkMapObject
+                        else { return }
 
-                            placemark.setIconWith(viewImageWithPhoto)
-                        }
+                        placemark.setIconWith(viewImageWithPhoto)
                     }
                 }
             }

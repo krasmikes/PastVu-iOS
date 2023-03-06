@@ -41,16 +41,7 @@ class PhotoViewModel {
     }
 
     private func loadPhotoImage () {
-        guard let photoUrl = photo?.filePath else { return }
-        networkService.loadImage(
-            path: photoUrl) { [weak self] result in
-                switch result {
-                case .success(let image):
-                    self?.view?.updatePhoto(image)
-                    self?.photoImage = image
-                case .failure(_):
-                    print("--- ERROR OCCURED IN PHOTOVIEWMODEL LOADPHOTOIMAGE ---")
-                }
-            }
+        guard let url = photo?.filePath.pastvuURL else { return }
+        view?.setPhoto(with: url)
     }
 }

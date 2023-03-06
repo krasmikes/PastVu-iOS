@@ -69,18 +69,4 @@ final class NetworkService {
         }
         .resume()
     }
-
-    func loadImage(path: String, completion: @escaping (Result<UIImage, Error>) -> ()) {
-        guard let baseUrl = URL(string: "https://pastvu.com/_p/d/") else { return }
-        let url = baseUrl.appendingPathComponent(path)
-
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                completion(.success(image))
-            } else {
-                completion(.failure(NSError()))
-            }
-        }
-    }
 }

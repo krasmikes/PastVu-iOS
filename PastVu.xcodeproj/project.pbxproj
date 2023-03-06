@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		29194AE328538E9E00ED8D68 /* ClusterPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */; };
 		29236913287D9C63000CC8AE /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29236912287D9C63000CC8AE /* PhotoView.swift */; };
-		292E6A9F2852852B00248068 /* YandexMapKit-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292E6A9E2852852B00248068 /* YandexMapKit-Info.plist */; };
 		292EE22A2848AD7F00CB27C9 /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */; };
 		2944790B284FA06700EC55E0 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790A284FA06700EC55E0 /* PhotoViewModel.swift */; };
 		2944790D284FAA9D00EC55E0 /* GiveForPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944790C284FAA9D00EC55E0 /* GiveForPage.swift */; };
@@ -17,7 +16,7 @@
 		2947DEDB288AA7A7006735B2 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2947DEDA288AA7A7006735B2 /* RangeSlider.swift */; };
 		2947DEDF288C1B42006735B2 /* Int+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2947DEDE288C1B41006735B2 /* Int+CGFloat.swift */; };
 		294A0D6F28870474005D0593 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294A0D6E28870474005D0593 /* UIView+AddSubviews.swift */; };
-		294F6A35289BAE0600345B8E /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294F6A34289BAE0600345B8E /* String+HTML.swift */; };
+		294F6A35289BAE0600345B8E /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294F6A34289BAE0600345B8E /* String++.swift */; };
 		294F6A37289BBAE700345B8E /* UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294F6A36289BBAE700345B8E /* UIColor+HEX.swift */; };
 		2950FFFE289E777100FA57B1 /* CGFloat+CubicBezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950FFFD289E777100FA57B1 /* CGFloat+CubicBezier.swift */; };
 		297564BD2825068F006840E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297564BC2825068F006840E7 /* AppDelegate.swift */; };
@@ -44,6 +43,8 @@
 		29BB544E28474D1900AEFB78 /* PinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB544D28474D1900AEFB78 /* PinViewModel.swift */; };
 		29C7EA02283266F400FA3E30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA01283266F400FA3E30 /* MapView.swift */; };
 		29C7EA042832677700FA3E30 /* YandexMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7EA032832677700FA3E30 /* YandexMapView.swift */; };
+		29CB9D8129B66415000D5A4D /* EasyAnchor in Frameworks */ = {isa = PBXBuildFile; productRef = 29CB9D8029B66415000D5A4D /* EasyAnchor */; };
+		29CB9D8429B66450000D5A4D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 29CB9D8329B66450000D5A4D /* SDWebImage */; };
 		29E794492842462200907A53 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E794482842462200907A53 /* UserDefaultsManager.swift */; };
 		29F77740288E75620051FCF6 /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7773F288E75620051FCF6 /* RangeSliderTrackLayer.swift */; };
 		3C2304C4107D8133053E0740 /* Pods_PastVu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2144BB56CA3A6FA1AE8B025 /* Pods_PastVu.framework */; };
@@ -53,7 +54,6 @@
 		0D69E59CAA63A98C346131E7 /* Pods-PastVu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastVu.release.xcconfig"; path = "Target Support Files/Pods-PastVu/Pods-PastVu.release.xcconfig"; sourceTree = "<group>"; };
 		29194AE228538E9E00ED8D68 /* ClusterPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterPlacemark.swift; sourceTree = "<group>"; };
 		29236912287D9C63000CC8AE /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
-		292E6A9E2852852B00248068 /* YandexMapKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YandexMapKit-Info.plist"; sourceTree = "<group>"; };
 		292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
 		2944790A284FA06700EC55E0 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		2944790C284FAA9D00EC55E0 /* GiveForPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveForPage.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		2947DEDA288AA7A7006735B2 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		2947DEDE288C1B41006735B2 /* Int+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+CGFloat.swift"; sourceTree = "<group>"; };
 		294A0D6E28870474005D0593 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
-		294F6A34289BAE0600345B8E /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
+		294F6A34289BAE0600345B8E /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
 		294F6A36289BBAE700345B8E /* UIColor+HEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HEX.swift"; sourceTree = "<group>"; };
 		2950FFFD289E777100FA57B1 /* CGFloat+CubicBezier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+CubicBezier.swift"; sourceTree = "<group>"; };
 		297564B92825068F006840E7 /* PastVu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastVu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +101,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29CB9D8429B66450000D5A4D /* SDWebImage in Frameworks */,
 				3C2304C4107D8133053E0740 /* Pods_PastVu.framework in Frameworks */,
+				29CB9D8129B66415000D5A4D /* EasyAnchor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +124,7 @@
 				292EE2292848AD7F00CB27C9 /* UIView+Rotation.swift */,
 				294A0D6E28870474005D0593 /* UIView+AddSubviews.swift */,
 				2947DEDE288C1B41006735B2 /* Int+CGFloat.swift */,
-				294F6A34289BAE0600345B8E /* String+HTML.swift */,
+				294F6A34289BAE0600345B8E /* String++.swift */,
 				294F6A36289BBAE700345B8E /* UIColor+HEX.swift */,
 				2950FFFD289E777100FA57B1 /* CGFloat+CubicBezier.swift */,
 			);
@@ -170,7 +172,6 @@
 				297564C528250691006840E7 /* Assets.xcassets */,
 				297564C728250691006840E7 /* LaunchScreen.storyboard */,
 				297564CA28250691006840E7 /* Info.plist */,
-				292E6A9E2852852B00248068 /* YandexMapKit-Info.plist */,
 				292EE22B2848ADD500CB27C9 /* Extentions */,
 			);
 			path = PastVu;
@@ -297,6 +298,10 @@
 			dependencies = (
 			);
 			name = PastVu;
+			packageProductDependencies = (
+				29CB9D8029B66415000D5A4D /* EasyAnchor */,
+				29CB9D8329B66450000D5A4D /* SDWebImage */,
+			);
 			productName = PastVu;
 			productReference = 297564B92825068F006840E7 /* PastVu.app */;
 			productType = "com.apple.product-type.application";
@@ -325,6 +330,10 @@
 				Base,
 			);
 			mainGroup = 297564B02825068F006840E7;
+			packageReferences = (
+				29CB9D7F29B66415000D5A4D /* XCRemoteSwiftPackageReference "EasyAnchor" */,
+				29CB9D8229B66450000D5A4D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 297564BA2825068F006840E7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,7 +348,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				292E6A9F2852852B00248068 /* YandexMapKit-Info.plist in Resources */,
 				297564C928250691006840E7 /* LaunchScreen.storyboard in Resources */,
 				297564C628250691006840E7 /* Assets.xcassets in Resources */,
 			);
@@ -395,7 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29BB54442844A4CB00AEFB78 /* MapSettings.swift in Sources */,
-				294F6A35289BAE0600345B8E /* String+HTML.swift in Sources */,
+				294F6A35289BAE0600345B8E /* String++.swift in Sources */,
 				2950FFFE289E777100FA57B1 /* CGFloat+CubicBezier.swift in Sources */,
 				297564D7282C01B4006840E7 /* Pin.swift in Sources */,
 				2947DEDF288C1B42006735B2 /* Int+CGFloat.swift in Sources */,
@@ -584,7 +592,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.krasmikes.PastVu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krasmikes.PastVu.new;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -615,7 +623,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.krasmikes.PastVu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krasmikes.PastVu.new;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -645,6 +653,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		29CB9D7F29B66415000D5A4D /* XCRemoteSwiftPackageReference "EasyAnchor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onmyway133/EasyAnchor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		29CB9D8229B66450000D5A4D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		29CB9D8029B66415000D5A4D /* EasyAnchor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29CB9D7F29B66415000D5A4D /* XCRemoteSwiftPackageReference "EasyAnchor" */;
+			productName = EasyAnchor;
+		};
+		29CB9D8329B66450000D5A4D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29CB9D8229B66450000D5A4D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 297564B12825068F006840E7 /* Project object */;
 }

@@ -10,6 +10,7 @@ import UIKit
 protocol PhotoView: UIViewController {
     func updateInfo()
     func updatePhoto(_ image: UIImage)
+    func setPhoto(with url: URL)
 }
 
 class PhotoViewImpl: UIViewController {
@@ -254,6 +255,10 @@ extension PhotoViewImpl: PhotoView {
             self.activityIndicator.stopAnimating()
             self.photoView.image = image
         }
+    }
+    
+    func setPhoto(with url: URL) {
+        photoView.sd_setImage(with: url)
     }
 }
 

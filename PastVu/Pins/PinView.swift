@@ -87,7 +87,6 @@ class PinView: UIView {
             photoView.isHidden = false
             photoView.backgroundColor = .gray
             photoView.image = UIImage(systemName: "photo")
-            viewModel.getImage()
 
             [
                 heightAnchor.constraint(equalToConstant: 40),
