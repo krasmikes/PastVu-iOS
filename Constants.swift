@@ -8,7 +8,7 @@
 import UIKit
 
 struct SliderConstants {
-    static let thumbSize = CGSize(width: 20, height: 20)
+    static let thumbSize = CGSize(width: 30, height: 30)
     static let rangeBoundaries = (minimumYear: 1826, maximumYear: 2000)
 
     ///For more information at this page: https://blog.maximeheckel.com/posts/cubic-bezier-from-math-to-motion/

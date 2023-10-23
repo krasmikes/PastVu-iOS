@@ -16,7 +16,7 @@ class YandexMapView: UIView, MapView {
 #if targetEnvironment(simulator)
     private let view = YMKMapView(frame: .zero, vulkanPreferred: true)!
 #else
-    private let view = YMKMapView(frame: .zero)
+    private let view = YMKMapView(frame: .zero)!
 #endif
 
     init(viewModel: MapViewModel) {

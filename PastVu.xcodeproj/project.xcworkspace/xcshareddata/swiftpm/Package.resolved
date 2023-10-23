@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "easyanchor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onmyway133/EasyAnchor",
+      "state" : {
+        "revision" : "20bf708b0d7af8ae527293af6281bfb54c74d41e",
+        "version" : "3.0.1"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "1f06ef5007b6a580b3873ed2adee19e05d3b215a",
+        "version" : "5.18.3"
+      }
+    },
+    {
+      "identity" : "yandexmapsmobile",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/c-villain/YandexMapsMobile.git",
+      "state" : {
+        "revision" : "4afaf4809959276f1eaf4788d48a0c7974b36093",
+        "version" : "4.4.0"
+      }
+    }
+  ],
+  "version" : 2
+}

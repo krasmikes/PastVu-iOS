@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EasyAnchor
 
 class RangeSlider: UIControl {
     override var frame: CGRect {
@@ -26,6 +27,8 @@ class RangeSlider: UIControl {
     private let lowerThumbImageView = UIImageView()
     private let upperThumbImageView = UIImageView()
     private let valueLabel = UILabel()
+    private let lowerValueLabel = UILabel()
+    private let upperValueLabel = UILabel()
 
     private let thumbImage = UIImage(named: "sliderThumb")
     private let thumbImageSelected = UIImage(named: "sliderThumbSelected")
@@ -49,6 +52,21 @@ class RangeSlider: UIControl {
         valueLabel.textColor = .white
         valueLabel.textAlignment = .center
         valueLabel.isHidden = true
+        
+        lowerValueLabel.layer.cornerRadius = 5
+        lowerValueLabel.layer.masksToBounds = true
+        lowerValueLabel.backgroundColor = .black.withAlphaComponent(0.5)
+        lowerValueLabel.font = .systemFont(ofSize: 18, weight: .medium)
+        lowerValueLabel.textColor = .white
+        lowerValueLabel.textAlignment = .center
+        
+        upperValueLabel.layer.cornerRadius = 5
+        upperValueLabel.layer.masksToBounds = true
+        upperValueLabel.backgroundColor = .black.withAlphaComponent(0.5)
+        upperValueLabel.font = .systemFont(ofSize: 18, weight: .medium)
+        upperValueLabel.textColor = .white
+        upperValueLabel.textAlignment = .center
+        
 
         lowerThumbImageView.image = thumbImage
         lowerThumbImageView.highlightedImage = thumbImageSelected
@@ -57,7 +75,21 @@ class RangeSlider: UIControl {
         upperThumbImageView.highlightedImage = thumbImageSelected
         addSubview(upperThumbImageView)
         addSubview(valueLabel)
-
+        addSubview(lowerValueLabel)
+        addSubviews(upperValueLabel)
+        activate(
+            lowerValueLabel.anchor.width.equal.to(50),
+            lowerValueLabel.anchor.height.equal.to(25),
+            lowerValueLabel.anchor.leading,
+            lowerValueLabel.anchor.bottom.equal.to(anchor.top).constant(-5),
+            
+            upperValueLabel.anchor.width.equal.to(50),
+            upperValueLabel.anchor.height.equal.to(25),
+            upperValueLabel.anchor.trailing,
+            upperValueLabel.anchor.bottom.equal.to(anchor.top).constant(-5)
+        )
+        lowerValueLabel.text = String(lowerYear)
+        upperValueLabel.text = String(upperYear)
         updateLayerFrames()
     }
 
@@ -112,6 +144,9 @@ class RangeSlider: UIControl {
             )
         }
         valueLabel.isHidden = false
+        
+        lowerValueLabel.text = String(lowerValue)
+        upperValueLabel.text = String(upperValue)
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EasyAnchor
 
 class MainViewController: UIViewController {
     private let viewModel = MainViewModel()
@@ -83,35 +84,34 @@ class MainViewController: UIViewController {
         currentLocationButton.addTarget(viewModel, action: "currentLocationButtonTapped", for: .touchUpInside)
         rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged(_:)), for: .valueChanged)
 
-        view.addSubviews(mapView, controlsStackView, rangeSlider)
+        let sliderContainerView = UIView()
+        sliderContainerView.addSubview(rangeSlider)
+        view.addSubviews(mapView, controlsStackView, sliderContainerView)
         [
             zoomInButton,
             zoomOutButton,
             currentLocationButton
         ].forEach { controlsStackView.addArrangedSubview($0) }
-
-        [
-            mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mapView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            mapView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0),
-            mapView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0),
-
-            controlsStackView.centerYAnchor.constraint(equalTo: mapView.centerYAnchor),
-            controlsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            controlsStackView.widthAnchor.constraint(equalToConstant: 40),
-
-            zoomInButton.heightAnchor.constraint(equalToConstant: 40),
-
-            zoomOutButton.heightAnchor.constraint(equalToConstant: 40),
-
-            currentLocationButton.heightAnchor.constraint(equalToConstant: 40),
-
-            rangeSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            rangeSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            rangeSlider.heightAnchor.constraint(equalToConstant: 30),
-            rangeSlider.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-
-        ].forEach { $0.isActive = true }
+        
+        activate(
+            mapView.anchor.edges,
+            
+            controlsStackView.anchor.centerY,
+            controlsStackView.anchor.trailing.constant(-20),
+            controlsStackView.anchor.width.equal.to(40),
+            
+            zoomInButton.anchor.size.equal.to(40),
+            zoomOutButton.anchor.size.equal.to(40),
+            currentLocationButton.anchor.size.equal.to(40),
+            
+            sliderContainerView.anchor.leading.trailing.bottom,
+            sliderContainerView.anchor.top.equal.to(rangeSlider.anchor.top).constant(-20),
+            
+            rangeSlider.anchor.paddingHorizontally(20),
+            rangeSlider.anchor.bottom.equal.to(view.safeAreaLayoutGuide.anchor.bottom).constant(-5),
+            rangeSlider.anchor.height.equal.to(30)
+            
+        )
 
         viewModel.viewDidLoad()
     }

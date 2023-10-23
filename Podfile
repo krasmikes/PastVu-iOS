@@ -6,6 +6,6 @@ target 'PastVu' do
   use_frameworks!
 
   # Pods for PastVu
-  pod 'YandexMapsMobile', '4.3.0-lite'
+  pod 'YandexMapsMobile', '4.4.0-lite'
 
 end

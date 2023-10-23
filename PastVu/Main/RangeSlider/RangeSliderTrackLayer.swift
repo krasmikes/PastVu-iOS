@@ -17,20 +17,20 @@ class RangeSliderTrackLayer: CAGradientLayer {
 
         type = .axial
         let activeColors = [
-            CGColor(red: 0, green: 0, blue: 102, alpha: 1),
-            CGColor(red: 0, green: 0, blue: 171, alpha: 1),
-            CGColor(red: 57, green: 0, blue: 171, alpha: 1),
-            CGColor(red: 114, green: 0, blue: 171, alpha: 1),
-            CGColor(red: 171, green: 0, blue: 171, alpha: 1),
-            CGColor(red: 171, green: 0, blue: 114, alpha: 1),
-            CGColor(red: 171, green: 0, blue: 57, alpha: 1),
-            CGColor(red: 171, green: 0, blue: 0, alpha: 1),
-            CGColor(red: 171, green: 57, blue: 0, alpha: 1),
-            CGColor(red: 171, green: 114, blue: 0, alpha: 1),
-            CGColor(red: 171, green: 171, blue: 0, alpha: 1),
-            CGColor(red: 114, green: 171, blue: 0, alpha: 1),
-            CGColor(red: 57, green: 171, blue: 0, alpha: 1),
-            CGColor(red: 0, green: 171, blue: 0, alpha: 1),
+            CGColor(red: 0,   green: 0,   blue: 102, alpha: 1),
+            CGColor(red: 0,   green: 0,   blue: 171, alpha: 1),
+            CGColor(red: 57,  green: 0,   blue: 171, alpha: 1),
+            CGColor(red: 114, green: 0,   blue: 171, alpha: 1),
+            CGColor(red: 171, green: 0,   blue: 171, alpha: 1),
+            CGColor(red: 171, green: 0,   blue: 114, alpha: 1),
+            CGColor(red: 171, green: 0,   blue: 57,  alpha: 1),
+            CGColor(red: 171, green: 0,   blue: 0,   alpha: 1),
+            CGColor(red: 171, green: 57,  blue: 0,   alpha: 1),
+            CGColor(red: 171, green: 114, blue: 0,   alpha: 1),
+            CGColor(red: 171, green: 171, blue: 0,   alpha: 1),
+            CGColor(red: 114, green: 171, blue: 0,   alpha: 1),
+            CGColor(red: 57,  green: 171, blue: 0,   alpha: 1),
+            CGColor(red: 0,   green: 171, blue: 0,   alpha: 1),
         ]
         let inactiveColors = activeColors.map { $0.copy(alpha: 0.3) }
 
